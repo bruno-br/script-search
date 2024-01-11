@@ -1,4 +1,6 @@
-[gd_scene format=3 uid="uid://dqlnvkakydt46"]
+[gd_scene load_steps=2 format=3 uid="uid://dqlnvkakydt46"]
+
+[ext_resource type="PackedScene" uid="uid://oyjhpfgrtbdu" path="res://addons/script_search/scenes/FileButton.tscn" id="1_sut5y"]
 
 [node name="SearchBox" type="Control"]
 layout_mode = 3
@@ -22,42 +24,43 @@ offset_bottom = 175.5
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VSplitContainer" type="VSplitContainer" parent="Panel"]
-clip_contents = true
+[node name="MarginContainer" type="MarginContainer" parent="Panel"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 7.0
-offset_top = 7.0
-offset_right = -7.0
-offset_bottom = -7.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VSplitContainer" type="VSplitContainer" parent="Panel/MarginContainer"]
+layout_mode = 2
 split_offset = 10
 
-[node name="LineEdit" type="LineEdit" parent="Panel/VSplitContainer"]
+[node name="LineEdit" type="LineEdit" parent="Panel/MarginContainer/VSplitContainer"]
 layout_mode = 2
+size_flags_vertical = 0
 placeholder_text = "Search scripts by name"
 alignment = 1
 
-[node name="ScrollContainer" type="ScrollContainer" parent="Panel/VSplitContainer"]
-clip_contents = false
+[node name="ScrollContainer" type="ScrollContainer" parent="Panel/MarginContainer/VSplitContainer"]
 layout_mode = 2
 vertical_scroll_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Panel/VSplitContainer/ScrollContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/MarginContainer/VSplitContainer/ScrollContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="Button" type="Button" parent="Panel/VSplitContainer/ScrollContainer/VBoxContainer"]
+[node name="FileButton" parent="Panel/MarginContainer/VSplitContainer/ScrollContainer/VBoxContainer" instance=ExtResource("1_sut5y")]
 layout_mode = 2
-text = "Option 1"
-alignment = 0
+size_flags_horizontal = 3
+size_flags_vertical = 4
 
-[node name="Button2" type="Button" parent="Panel/VSplitContainer/ScrollContainer/VBoxContainer"]
+[node name="FileButton2" parent="Panel/MarginContainer/VSplitContainer/ScrollContainer/VBoxContainer" instance=ExtResource("1_sut5y")]
 layout_mode = 2
-text = "Option 2"
-alignment = 0
-expand_icon = true
+size_flags_horizontal = 3
+size_flags_vertical = 4
