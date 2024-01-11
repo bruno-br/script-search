@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://crxcfe83u4hif"]
+
+[node name="SearchMenu" type="PopupPanel"]
+title = "jadfkljdkladskl"
+size = Vector2i(640, 360)
+visible = true

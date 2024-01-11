@@ -1,0 +1,63 @@
+[gd_scene format=3 uid="uid://dqlnvkakydt46"]
+
+[node name="SearchBox" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -279.0
+offset_top = -175.5
+offset_right = 279.0
+offset_bottom = 175.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VSplitContainer" type="VSplitContainer" parent="Panel"]
+clip_contents = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 7.0
+offset_top = 7.0
+offset_right = -7.0
+offset_bottom = -7.0
+grow_horizontal = 2
+grow_vertical = 2
+split_offset = 10
+
+[node name="LineEdit" type="LineEdit" parent="Panel/VSplitContainer"]
+layout_mode = 2
+placeholder_text = "Search scripts by name"
+alignment = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Panel/VSplitContainer"]
+clip_contents = false
+layout_mode = 2
+vertical_scroll_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/VSplitContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Button" type="Button" parent="Panel/VSplitContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+text = "Option 1"
+alignment = 0
+
+[node name="Button2" type="Button" parent="Panel/VSplitContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+text = "Option 2"
+alignment = 0
+expand_icon = true
