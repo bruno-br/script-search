@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://dqlnvkakydt46"]
+[gd_scene load_steps=3 format=3 uid="uid://dqlnvkakydt46"]
 
-[ext_resource type="PackedScene" uid="uid://oyjhpfgrtbdu" path="res://addons/script_search/scenes/FileButton.tscn" id="1_sut5y"]
+[ext_resource type="Script" path="res://addons/script_search/src/SearchBox.gd" id="1_1bkl4"]
+[ext_resource type="Script" path="res://addons/script_search/src/FileButtons.gd" id="2_w5328"]
 
 [node name="SearchBox" type="Control"]
 layout_mode = 3
@@ -9,6 +10,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_1bkl4")
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 1
@@ -50,17 +52,8 @@ alignment = 1
 layout_mode = 2
 vertical_scroll_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Panel/MarginContainer/VSplitContainer/ScrollContainer"]
+[node name="FileButtons" type="VBoxContainer" parent="Panel/MarginContainer/VSplitContainer/ScrollContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-
-[node name="FileButton" parent="Panel/MarginContainer/VSplitContainer/ScrollContainer/VBoxContainer" instance=ExtResource("1_sut5y")]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 4
-
-[node name="FileButton2" parent="Panel/MarginContainer/VSplitContainer/ScrollContainer/VBoxContainer" instance=ExtResource("1_sut5y")]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 4
+script = ExtResource("2_w5328")
