@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://o4ytvvnx6xjw"]
+
+[ext_resource type="Script" path="res://addons/script_search/src/SearchInput.gd" id="1_o6iwj"]
+
+[node name="SearchInput" type="LineEdit"]
+size_flags_vertical = 0
+placeholder_text = "Search scripts by name"
+script = ExtResource("1_o6iwj")

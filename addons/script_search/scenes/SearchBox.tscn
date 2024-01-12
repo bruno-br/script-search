@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://dqlnvkakydt46"]
+[gd_scene load_steps=4 format=3 uid="uid://dqlnvkakydt46"]
 
 [ext_resource type="Script" path="res://addons/script_search/src/SearchBox.gd" id="1_1bkl4"]
+[ext_resource type="PackedScene" uid="uid://o4ytvvnx6xjw" path="res://addons/script_search/scenes/SearchInput.tscn" id="2_1xhlp"]
 [ext_resource type="Script" path="res://addons/script_search/src/FileButtons.gd" id="2_w5328"]
 
 [node name="SearchBox" type="Control"]
@@ -41,12 +42,11 @@ theme_override_constants/margin_bottom = 10
 [node name="VSplitContainer" type="VSplitContainer" parent="Panel/MarginContainer"]
 layout_mode = 2
 split_offset = 10
+collapsed = true
+dragger_visibility = 1
 
-[node name="LineEdit" type="LineEdit" parent="Panel/MarginContainer/VSplitContainer"]
+[node name="SearchInput" parent="Panel/MarginContainer/VSplitContainer" instance=ExtResource("2_1xhlp")]
 layout_mode = 2
-size_flags_vertical = 0
-placeholder_text = "Search scripts by name"
-alignment = 1
 
 [node name="ScrollContainer" type="ScrollContainer" parent="Panel/MarginContainer/VSplitContainer"]
 layout_mode = 2
