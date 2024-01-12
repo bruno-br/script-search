@@ -1,6 +1,9 @@
 @tool
 
 extends Control
+
+const FileSearcher := preload("res://addons/script_search/src/FileSearcher.gd")
+
 var _matching_files = []
 
 func open():

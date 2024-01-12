@@ -7,7 +7,6 @@ const InputManager := preload("./src/InputManager.gd")
 
 var _search_menu = null
 var _input_manager = null
-var _modifiers_mask = null
 
 func _enter_tree() -> void:
 	self._input_manager = InputManager.new()
