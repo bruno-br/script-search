@@ -1,14 +1,14 @@
 [gd_scene load_steps=3 format=3 uid="uid://crxcfe83u4hif"]
 
+[ext_resource type="Script" path="res://addons/script_search/src/scene_scripts/SearchMenu.gd" id="1_6i7iq"]
 [ext_resource type="PackedScene" uid="uid://dqlnvkakydt46" path="res://addons/script_search/scenes/SearchBox.tscn" id="1_n5psp"]
-[ext_resource type="Script" path="res://addons/script_search/src/SearchMenu.gd" id="1_ye5b5"]
 
 [node name="SearchMenu" type="PopupPanel"]
 title = "Script Search"
 initial_position = 1
 size = Vector2i(640, 360)
 visible = true
-script = ExtResource("1_ye5b5")
+script = ExtResource("1_6i7iq")
 
 [node name="SearchBox" parent="." instance=ExtResource("1_n5psp")]
 offset_left = 4.0

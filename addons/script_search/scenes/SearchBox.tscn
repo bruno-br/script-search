@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://dqlnvkakydt46"]
 
-[ext_resource type="Script" path="res://addons/script_search/src/SearchBox.gd" id="1_1bkl4"]
+[ext_resource type="Script" path="res://addons/script_search/src/scene_scripts/SearchBox.gd" id="1_2xgno"]
 [ext_resource type="PackedScene" uid="uid://o4ytvvnx6xjw" path="res://addons/script_search/scenes/SearchInput.tscn" id="2_1xhlp"]
-[ext_resource type="Script" path="res://addons/script_search/src/FileButtons.gd" id="2_w5328"]
+[ext_resource type="Script" path="res://addons/script_search/src/scene_scripts/FileButtons.gd" id="3_siqrh"]
 
 [node name="SearchBox" type="Control"]
 layout_mode = 3
@@ -11,7 +11,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_1bkl4")
+script = ExtResource("1_2xgno")
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 1
@@ -52,4 +52,4 @@ vertical_scroll_mode = 2
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-script = ExtResource("2_w5328")
+script = ExtResource("3_siqrh")
