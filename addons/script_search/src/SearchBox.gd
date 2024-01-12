@@ -5,7 +5,8 @@ extends Control
 var _matching_files = []
 
 func _ready():
-	update_matching_files(["File 1", "File 2", "File 3"])
+	var files = FileSearcher.get_files("res://")
+	update_matching_files(files)
 
 func update_matching_files(matching_files: Array):
 	self._matching_files = matching_files
