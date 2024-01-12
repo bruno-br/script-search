@@ -1,7 +1,6 @@
-extends LineEdit
+@tool
 
-func _ready():
-	grab_focus()
+extends LineEdit
 
 func _unhandled_key_input(event: InputEvent):
 	if _should_focus_next_element(event):

@@ -1,3 +1,5 @@
+@tool
+
 class_name FileSearcher
 
 const BLACKLIST := ["res://.godot", "res://addons"] 

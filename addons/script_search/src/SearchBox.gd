@@ -1,13 +1,17 @@
-extends Control
+@tool
 
-@onready var _file_buttons: FileButtons = $Panel/MarginContainer/VSplitContainer/ScrollContainer/FileButtons
+extends Control
 
 var _matching_files = []
 
-func _ready():
-	var files = FileSearcher.get_files("res://")
-	update_matching_files(files)
+func open():
+	update_matching_files()
+	$Panel/MarginContainer/VSplitContainer/ScrollContainer/FileButtons.open(self._matching_files)
+	$Panel/MarginContainer/VSplitContainer/SearchInput.grab_focus()
 
-func update_matching_files(matching_files: Array):
-	self._matching_files = matching_files
-	self._file_buttons.update(matching_files)
+func close():
+	$Panel/MarginContainer/VSplitContainer/ScrollContainer/FileButtons.close()
+	self._matching_files = []
+
+func update_matching_files():
+	self._matching_files = FileSearcher.get_files("res://")

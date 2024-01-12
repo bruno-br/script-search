@@ -1,14 +1,19 @@
 @tool
+
 extends EditorPlugin
 
-const MenuScene := preload("res://addons/script_search/scenes/SearchMenu.tscn")
+const SearchMenuScene := preload("res://addons/script_search/scenes/SearchMenu.tscn")
 
-var _menu
+const ACTION_NAME = "addon_script_search_open"
+
+var _search_menu
 
 func _enter_tree() -> void:
-	self._menu = MenuScene.instantiate()
-	self._menu.show()
+	_setup_input_action()
+	self._search_menu = SearchMenuScene.instantiate()
+	self._search_menu.hide()
+	get_editor_interface().get_base_control().add_child(self._search_menu)
 
 func _exit_tree() -> void:
-	self._menu.hide()
-	self._menu.queue_free()
+	self._search_menu.hide()
+	self._search_menu.queue_free()
