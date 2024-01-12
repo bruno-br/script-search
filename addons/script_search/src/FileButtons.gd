@@ -2,8 +2,6 @@
 
 extends VBoxContainer
 
-class_name FileButtons
-
 const FileButtonScene := preload('res://addons/script_search/scenes/FileButton.tscn')
 
 func open(files: Array):
