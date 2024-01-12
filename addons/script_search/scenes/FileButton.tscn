@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://addons/script_search/src/scene_scripts/FileButton.gd" id="1_rbymc"]
 
 [node name="MarginContainer" type="MarginContainer"]
-offset_right = 40.0
+offset_right = 320.0
 offset_bottom = 40.0
 theme_override_constants/margin_left = 2
 theme_override_constants/margin_top = 2
@@ -14,6 +14,45 @@ script = ExtResource("1_rbymc")
 [node name="Button" type="Button" parent="."]
 layout_mode = 2
 theme_override_constants/outline_size = -2
-text = "File 1"
+text = " "
 alignment = 0
+text_overrun_behavior = 1
 icon_alignment = 1
+
+[node name="FileNameLabel" type="Label" parent="Button"]
+layout_mode = 1
+anchors_preset = -1
+anchor_bottom = 1.0
+offset_right = 222.0
+offset_bottom = 1.0
+grow_vertical = 2
+size_flags_horizontal = 8
+theme_type_variation = &"HeaderMedium"
+text = "File Name"
+vertical_alignment = 1
+autowrap_mode = 1
+clip_text = true
+text_overrun_behavior = 3
+max_lines_visible = 1
+
+[node name="FilePathLabel" type="Label" parent="Button"]
+layout_direction = 3
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -2.0
+offset_right = -238.0
+offset_bottom = 2.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 8
+text = "File Path"
+horizontal_alignment = 2
+vertical_alignment = 1
+autowrap_mode = 1
+clip_text = true
+text_overrun_behavior = 3
+max_lines_visible = 1
+visible_characters_behavior = 1
+structured_text_bidi_override = 2

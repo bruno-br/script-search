@@ -6,7 +6,7 @@
 [node name="SearchMenu" type="PopupPanel"]
 title = "Script Search"
 initial_position = 1
-size = Vector2i(640, 360)
+size = Vector2i(720, 360)
 visible = true
 script = ExtResource("1_6i7iq")
 
