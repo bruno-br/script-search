@@ -35,3 +35,4 @@ func _on_script_selected(file_name: String):
 		editor_interface.set_main_screen_editor("Script")
 		editor_interface.select_file(file_name)
 		editor_interface.edit_resource(script)
+		self._search_menu.hide()
