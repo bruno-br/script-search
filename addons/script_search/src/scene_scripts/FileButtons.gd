@@ -78,3 +78,7 @@ func _highlight_file_button(file_button):
 	file_button.set_highlight(true)
 	get_parent().ensure_control_visible(file_button)
 	self._highlighted_button = file_button
+
+func _on_selected():
+	if self._highlighted_button != null:
+		self._highlighted_button.select()

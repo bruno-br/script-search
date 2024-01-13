@@ -14,6 +14,9 @@ func set_file_name(full_name: String):
 	$Button/FileNameLabel.set_text(simple_name)
 	$Button/FilePathLabel.set_text(full_name.trim_prefix("res://"))
 
+func select():
+	emit_signal("script_selected", get_file_name())
+
 func get_button():
 	return $Button
 	
