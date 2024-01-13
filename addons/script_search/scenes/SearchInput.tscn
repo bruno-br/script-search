@@ -4,5 +4,11 @@
 
 [node name="SearchInput" type="LineEdit"]
 size_flags_vertical = 0
+focus_neighbor_left = NodePath(".")
+focus_neighbor_top = NodePath(".")
+focus_neighbor_right = NodePath(".")
+focus_neighbor_bottom = NodePath(".")
+focus_next = NodePath(".")
+focus_previous = NodePath(".")
 placeholder_text = "Search scripts by name"
 script = ExtResource("1_dqd18")

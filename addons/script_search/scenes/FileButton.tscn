@@ -13,7 +13,8 @@ script = ExtResource("1_rbymc")
 
 [node name="Button" type="Button" parent="."]
 layout_mode = 2
-theme_override_constants/outline_size = -2
+auto_translate = false
+focus_mode = 0
 text = " "
 alignment = 0
 text_overrun_behavior = 1
@@ -27,7 +28,7 @@ offset_right = 222.0
 offset_bottom = 1.0
 grow_vertical = 2
 size_flags_horizontal = 8
-theme_type_variation = &"HeaderMedium"
+theme_type_variation = &"HeaderSmall"
 text = "File Name"
 vertical_alignment = 1
 autowrap_mode = 1
@@ -57,4 +58,5 @@ max_lines_visible = 1
 visible_characters_behavior = 1
 structured_text_bidi_override = 2
 
+[connection signal="mouse_entered" from="Button" to="." method="_on_mouse_entered"]
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
