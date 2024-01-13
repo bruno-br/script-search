@@ -11,4 +11,5 @@ focus_neighbor_bottom = NodePath(".")
 focus_next = NodePath(".")
 focus_previous = NodePath(".")
 placeholder_text = "Search scripts by name"
+caret_force_displayed = true
 script = ExtResource("1_dqd18")
