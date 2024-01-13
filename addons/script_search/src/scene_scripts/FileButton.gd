@@ -2,8 +2,6 @@
 
 extends MarginContainer
 
-class_name FileButton
-
 var _file_name = ""
 
 func set_file_name(full_name: String):
@@ -12,3 +10,6 @@ func set_file_name(full_name: String):
 	
 	$Button/FileNameLabel.set_text(simple_name)
 	$Button/FilePathLabel.set_text(full_name.trim_prefix("res://"))
+
+func get_button():
+	return $Button
