@@ -12,3 +12,6 @@ func _call_method_on_children(method_name):
 	for child in get_children():
 		if child.has_method(method_name):
 			child.call(method_name)
+
+func get_search_box():
+	return $SearchBox

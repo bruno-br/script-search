@@ -56,3 +56,5 @@ text_overrun_behavior = 3
 max_lines_visible = 1
 visible_characters_behavior = 1
 structured_text_bidi_override = 2
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

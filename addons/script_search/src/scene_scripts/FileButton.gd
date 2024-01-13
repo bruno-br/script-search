@@ -2,6 +2,8 @@
 
 extends MarginContainer
 
+signal script_selected
+
 var _file_name = ""
 
 func set_file_name(full_name: String):
@@ -13,3 +15,9 @@ func set_file_name(full_name: String):
 
 func get_button():
 	return $Button
+	
+func get_file_name():
+	return self._file_name
+
+func _on_button_pressed():
+	emit_signal("script_selected", get_file_name())

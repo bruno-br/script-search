@@ -2,6 +2,8 @@
 
 extends VBoxContainer
 
+signal script_selected
+
 const FileButtonScene := preload('res://addons/script_search/scenes/FileButton.tscn')
 
 func open(files: Array):
@@ -16,6 +18,7 @@ func _add_buttons(files: Array):
 	for file in files:
 		var file_button = FileButtonScene.instantiate()
 		file_button.set_file_name(file)
+		file_button.script_selected.connect(_on_script_selected)
 		add_child(file_button)
 		
 		var curr_button = file_button.get_button()
@@ -32,3 +35,6 @@ func _clear_buttons():
 	for child in get_children():
 		child.hide()
 		child.queue_free()
+
+func _on_script_selected(script):
+	emit_signal("script_selected", script)
