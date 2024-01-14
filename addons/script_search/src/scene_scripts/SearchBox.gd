@@ -9,10 +9,11 @@ var _matching_files = []
 func open():
 	update_matching_files()
 	get_file_buttons().open(self._matching_files)
-	get_search_input().grab_focus()
+	get_search_input().open()
 
 func close():
 	get_file_buttons().close()
+	get_search_input().close()
 	self._matching_files = []
 
 func update_matching_files():

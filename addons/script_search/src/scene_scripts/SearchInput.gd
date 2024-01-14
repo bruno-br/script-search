@@ -25,6 +25,12 @@ func _gui_input(event):
 	
 	grab_focus()
 
+func open():
+	grab_focus()
+
+func close():
+	set_text("")
+
 func _update_caret():
 	if self._is_changing_highlight:
 		_hide_caret()
