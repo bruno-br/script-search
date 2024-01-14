@@ -3,11 +3,16 @@
 extends VBoxContainer
 
 signal script_selected
+signal search_text_updated
 
 const FileButtonScene := preload('res://addons/script_search/scenes/FileButton.tscn')
+const SEARCH_MATCH_TIME := 0.05
 
 var _buttons := []
 var _highlighted_button = null
+
+var _search_text: String = ""
+var _search_update_timer: SceneTreeTimer = null
 
 func open(files: Array):
 	_add_buttons(files)
@@ -22,6 +27,7 @@ func _add_buttons(files: Array):
 		file_button.set_file_name(file)
 		file_button.script_selected.connect(_on_script_selected)
 		file_button.button_hovered.connect(_on_button_hovered)
+		search_text_updated.connect(file_button._on_search_text_updated)
 		self._buttons.append(file_button)
 		add_child(file_button)
 
@@ -82,3 +88,14 @@ func _highlight_file_button(file_button):
 func _on_selected():
 	if self._highlighted_button != null:
 		self._highlighted_button.select()
+
+func _on_search_input_text_changed(new_text):
+	self._search_text = new_text
+	
+	if self._search_update_timer == null && not new_text.is_empty():
+		self._search_update_timer = get_tree().create_timer(SEARCH_MATCH_TIME)
+		
+		await self._search_update_timer.timeout
+		
+		emit_signal("search_text_updated", self._search_text)
+		self._search_update_timer = null

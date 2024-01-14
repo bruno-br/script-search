@@ -57,3 +57,4 @@ script = ExtResource("3_siqrh")
 [connection signal="highlight_next" from="Panel/MarginContainer/VSplitContainer/SearchInput" to="Panel/MarginContainer/VSplitContainer/ScrollContainer/FileButtons" method="_on_highlight_next"]
 [connection signal="highlight_prev" from="Panel/MarginContainer/VSplitContainer/SearchInput" to="Panel/MarginContainer/VSplitContainer/ScrollContainer/FileButtons" method="_on_highlight_prev"]
 [connection signal="selected" from="Panel/MarginContainer/VSplitContainer/SearchInput" to="Panel/MarginContainer/VSplitContainer/ScrollContainer/FileButtons" method="_on_selected"]
+[connection signal="text_changed" from="Panel/MarginContainer/VSplitContainer/SearchInput" to="Panel/MarginContainer/VSplitContainer/ScrollContainer/FileButtons" method="_on_search_input_text_changed"]
