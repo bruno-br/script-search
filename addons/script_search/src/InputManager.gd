@@ -7,12 +7,18 @@ var _modifiers_mask = null
 func _init():
 	var input_event = _get_input_event()
 	
-	InputMap.action_erase_events(ACTION_NAME)
+	if InputMap.has_action(ACTION_NAME):
+		InputMap.action_erase_events(ACTION_NAME)
+	else:
+		InputMap.add_action(ACTION_NAME)
+	
 	InputMap.action_add_event(ACTION_NAME, input_event)
 	
 	self._modifiers_mask = input_event.get_modifiers_mask()
 
 func matches_action(event) -> bool:
+	if not InputMap.has_action(ACTION_NAME): _init()
+	
 	return (
 		event is InputEventKey
 		&& event.is_action(ACTION_NAME)

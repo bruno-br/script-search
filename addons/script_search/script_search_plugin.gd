@@ -23,7 +23,7 @@ func _exit_tree() -> void:
 	self._search_menu.hide()
 	self._search_menu.queue_free()
 
-func _input(event):
+func _input(event: InputEvent):
 	if self._input_manager.matches_action(event):
 		self._search_menu.show()
 
