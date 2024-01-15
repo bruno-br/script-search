@@ -13,3 +13,5 @@ focus_previous = NodePath(".")
 placeholder_text = "Search scripts by name"
 caret_force_displayed = true
 script = ExtResource("1_dqd18")
+
+[connection signal="focus_exited" from="." to="." method="_on_focus_exited"]

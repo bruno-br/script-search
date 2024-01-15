@@ -66,3 +66,6 @@ func _handle_highlight_change(event, signal_name):
 		self._is_changing_highlight = false
 		emit_signal(signal_name)
 	_update_caret()
+
+func _on_focus_exited():
+	grab_focus()
