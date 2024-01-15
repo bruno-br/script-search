@@ -45,7 +45,7 @@ func _on_mouse_entered():
 	emit_signal("button_hovered", self)
 
 func _on_search_text_updated(new_text: String):
-	if self._file_name.contains(new_text):
+	if new_text.is_empty() || self._file_name.contains(new_text):
 		show()
 	else:
 		hide()

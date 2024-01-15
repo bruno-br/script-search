@@ -12,17 +12,13 @@ static func get_files(path: String, files := []) -> Array:
 	var file_name = dir.get_next()
 	
 	while file_name != "":
-		var full_name = _join_paths(path, file_name)
+		var full_name = path.path_join(file_name)
 		var valid_files = _find_valid_files(dir, full_name)
-		files.append_array(valid_files)
+		insert_ordered(files, valid_files)
 		
 		file_name = dir.get_next()
 	
 	return files
-
-static func _join_paths(path_1, path_2) -> String:
-	if path_1 == "res://": return path_1 + path_2
-	return path_1 + "/" + path_2
 
 static func _find_valid_files(dir: DirAccess, full_name: String) -> Array:
 	if dir.current_is_dir():
@@ -34,3 +30,8 @@ static func _is_dir_valid(dir_name: String) -> bool:
 
 static func _is_file_valid(file_name: String) -> bool:
 	return ALLOWED_EXTENSIONS.has(file_name.get_extension())
+
+static func insert_ordered(array: Array, new_elements: Array):
+	for element in new_elements:
+		var insert_pos := array.bsearch(element)
+		array.insert(insert_pos, element)

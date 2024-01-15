@@ -50,13 +50,10 @@ func _on_highlight_prev():
 		_highlight_file_button(self._buttons[0])
 		return
 	
-	var prev = self._buttons[-1]
+	var file_name = self._highlighted_button.get_file_name()
+	var expected_pos = self._buttons.bsearch_custom(file_name, _is_file_button_name_lower)
 	
-	for button in self._buttons:
-		if button == self._highlighted_button:
-			_highlight_file_button(prev)
-			return
-		prev = button
+	_highlight_file_button(self._buttons[expected_pos - 1])
 
 func _on_highlight_next():
 	if self._buttons.is_empty(): return
@@ -65,14 +62,15 @@ func _on_highlight_next():
 		_highlight_file_button(self._buttons[0])
 		return
 	
-	for index in range(self._buttons.size()):
-		if self._buttons[index] == self._highlighted_button:
-			var next = index + 1
-			if next < self._buttons.size():
-				_highlight_file_button(self._buttons[next])
-				return
+	var file_name = self._highlighted_button.get_file_name()
+	var expected_pos = self._buttons.bsearch_custom(file_name, _is_file_button_name_lower)
 	
-	_highlight_file_button(self._buttons[0])
+	var next = expected_pos + 1
+	if next >= self._buttons.size(): next = 0
+	_highlight_file_button(self._buttons[next])
+
+func _is_file_button_name_lower(file_button, searched_text) -> bool:
+	return (file_button.get_file_name() < searched_text)
 
 func _highlight_file_button(file_button):
 	if self._highlighted_button == file_button: 
@@ -92,7 +90,7 @@ func _on_selected():
 func _on_search_input_text_changed(new_text):
 	self._search_text = new_text
 	
-	if self._search_update_timer == null && not new_text.is_empty():
+	if self._search_update_timer == null:
 		self._search_update_timer = get_tree().create_timer(SEARCH_MATCH_TIME)
 		
 		await self._search_update_timer.timeout
