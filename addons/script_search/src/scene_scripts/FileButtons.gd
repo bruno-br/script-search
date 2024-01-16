@@ -18,14 +18,11 @@ var _search_text: String = ""
 var _search_update_timer: SceneTreeTimer = null
 var _visible_buttons_update_timer: SceneTreeTimer = null
 
-func open(files: Array):
-	_add_buttons(files)
+func open():
 	_highlight_file_button(self._file_buttons.get_first_visible())
 
-func close():
+func update_buttons(file_names: Array):
 	_clear_buttons()
-
-func _add_buttons(file_names: Array):
 	for file_name in file_names: _add_button(file_name)
 
 func _add_button(file_name):
