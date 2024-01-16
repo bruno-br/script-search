@@ -4,11 +4,13 @@ extends Control
 
 const FileSearcher := preload("res://addons/script_search/src/FileSearcher.gd")
 
+var _file_searcher = null
 var _matching_files = []
 var _buttons_update_pending := false
 var _is_updating_matching_files := false
 
 func _ready():
+	self._file_searcher = FileSearcher.new()
 	update_matching_files()
 	get_file_buttons().update_buttons(self._matching_files)
 
@@ -28,7 +30,7 @@ func update_matching_files():
 
 func _do_update_matching_files():
 	self._is_updating_matching_files = true
-	self._matching_files = FileSearcher.get_files("res://")
+	self._matching_files = self._file_searcher.get_files("res://")
 	self._is_updating_matching_files = false
 	
 	_enqueue_file_buttons_update()
