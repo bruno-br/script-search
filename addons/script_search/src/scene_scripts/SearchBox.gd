@@ -49,4 +49,4 @@ func get_file_buttons():
 	return $Panel/MarginContainer/VSplitContainer/ScrollContainer/FileButtons
 
 func get_search_input():
-	return $Panel/MarginContainer/VSplitContainer/SearchInput
+	return $Panel/MarginContainer/VSplitContainer/HSplitContainer/SearchInput

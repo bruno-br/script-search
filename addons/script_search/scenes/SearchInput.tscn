@@ -1,6 +1,19 @@
-[gd_scene load_steps=2 format=3 uid="uid://o4ytvvnx6xjw"]
+[gd_scene load_steps=3 format=3 uid="uid://o4ytvvnx6xjw"]
 
 [ext_resource type="Script" path="res://addons/script_search/src/scene_scripts/SearchInput.gd" id="1_dqd18"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a6m1j"]
+bg_color = Color(0, 0, 0, 0)
+draw_center = false
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.368627, 0.388235, 0.411765, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
 
 [node name="SearchInput" type="LineEdit"]
 size_flags_vertical = 0
@@ -10,6 +23,7 @@ focus_neighbor_right = NodePath(".")
 focus_neighbor_bottom = NodePath(".")
 focus_next = NodePath(".")
 focus_previous = NodePath(".")
+theme_override_styles/focus = SubResource("StyleBoxFlat_a6m1j")
 placeholder_text = "Search scripts by name"
 caret_force_displayed = true
 script = ExtResource("1_dqd18")
