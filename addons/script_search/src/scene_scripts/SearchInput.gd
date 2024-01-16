@@ -29,7 +29,11 @@ func open():
 	grab_focus()
 
 func close():
-	set_text("")
+	update_text("")
+
+func update_text(new_text):
+	set_text(new_text)
+	emit_signal("text_changed", new_text)
 
 func _update_caret():
 	if self._is_changing_highlight:
