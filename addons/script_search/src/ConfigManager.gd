@@ -29,7 +29,7 @@ static func _parse_json(file):
 	return JSON.new().parse_string(file.get_as_text())
 
 static func save_config_file(data: Dictionary) -> void:
-	var json_string = JSON.stringify(data)
+	var json_string = JSON.stringify(data, "\t")
 	var file = FileAccess.open(CONFIG_FILE_PATH, FileAccess.WRITE)
 	
 	if file != null:
