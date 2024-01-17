@@ -1,22 +1,15 @@
 @tool
 
-const CONFIG_FILE_PATH = "res://addons/script_search/config.json"
+const ConfigManager := preload("res://addons/script_search/src/ConfigManager.gd")
 
-const DEFAULT_ALLOWED_EXTENSIONS := ["gd", "gdshader"]
-const DEFAULT_DIR_BLACKLIST := ["res://.godot", "res://addons"]
-
-var _allowed_extensions := DEFAULT_ALLOWED_EXTENSIONS
-var _dir_blacklist := DEFAULT_DIR_BLACKLIST
+var _allowed_extensions := []
+var _dir_blacklist := []
 
 func _init():
-	if not FileAccess.file_exists(CONFIG_FILE_PATH): return
+	var config_data := ConfigManager.load_and_normalize_config()
 	
-	var file = FileAccess.open(CONFIG_FILE_PATH, FileAccess.READ)
-	var json_content = JSON.new().parse_string(file.get_as_text())
-	
-	if json_content != null:
-		update_allowed_extensions(json_content.get("allowed_extensions"))
-		update_dir_blacklist(json_content.get("dir_blacklist"))
+	self._allowed_extensions = config_data.get("allowed_extensions", [])
+	self._dir_blacklist = config_data.get("dir_blacklist", [])
 
 func get_files(path: String, files := []) -> Array:
 	var dir := DirAccess.open(path)
@@ -38,21 +31,6 @@ func _find_valid_files(dir: DirAccess, full_name: String) -> Array:
 		return get_files(full_name) if _is_dir_valid(full_name) else []
 	return [full_name] if _is_file_valid(full_name) else []
 
-func update_allowed_extensions(allowed_extensions):
-	self._allowed_extensions = _normalize_string_array(
-		allowed_extensions, 
-		self._allowed_extensions
-	)
-
-func update_dir_blacklist(dir_blacklist):
-	self._dir_blacklist = _normalize_string_array(
-		dir_blacklist, 
-		self._dir_blacklist
-	)
-
-func _normalize_string_array(array, default):
-	if not array is Array: return default
-	return array.filter(func(element): return element is String)
 
 func _is_dir_valid(dir_name: String) -> bool:
 	return not self._dir_blacklist.has(dir_name)
