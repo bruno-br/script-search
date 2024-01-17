@@ -3,7 +3,7 @@
 		"gd",
 		"gdshader"
 	],
-	"dir_blacklist": [
+	"directory_blacklist": [
 		"res://.godot",
 		"res://addons"
 	]

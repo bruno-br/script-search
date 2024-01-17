@@ -1,13 +1,13 @@
 const CONFIG_FILE_PATH = "res://addons/script_search/config.json"
 const DEFAULT_ALLOWED_EXTENSIONS := ["gd", "gdshader"]
-const DEFAULT_DIR_BLACKLIST := ["res://.godot", "res://addons"]
+const DEFAULT_DIRECTORY_BLACKLIST := ["res://.godot", "res://addons"]
 
 static func load_and_normalize_config() -> Dictionary:
 	var file_content = read_config_file()
 	
 	var normalized_content = {
 		"allowed_extensions": _get_allowed_extensions(file_content), 
-		"dir_blacklist": _get_dir_blacklist(file_content)
+		"directory_blacklist": _get_directory_blacklist(file_content)
 	}
 	
 	save_config_file(normalized_content)
@@ -40,9 +40,9 @@ static func _get_allowed_extensions(json_content):
 	var value = json_content.get("allowed_extensions")
 	return _normalize_string_array(value, DEFAULT_ALLOWED_EXTENSIONS)
 
-static func _get_dir_blacklist(json_content):
-	var value = json_content.get("dir_blacklist")
-	return _normalize_string_array(value, DEFAULT_DIR_BLACKLIST)
+static func _get_directory_blacklist(json_content):
+	var value = json_content.get("directory_blacklist")
+	return _normalize_string_array(value, DEFAULT_DIRECTORY_BLACKLIST)
 
 static func _normalize_string_array(array, default):
 	if not array is Array: return default

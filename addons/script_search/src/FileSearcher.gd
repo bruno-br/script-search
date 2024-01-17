@@ -3,13 +3,13 @@
 const ConfigManager := preload("res://addons/script_search/src/ConfigManager.gd")
 
 var _allowed_extensions := []
-var _dir_blacklist := []
+var _directory_blacklist := []
 
 func _init():
 	var config_data := ConfigManager.load_and_normalize_config()
 	
 	self._allowed_extensions = config_data.get("allowed_extensions", [])
-	self._dir_blacklist = config_data.get("dir_blacklist", [])
+	self._directory_blacklist = config_data.get("directory_blacklist", [])
 
 func get_files(path: String, files := []) -> Array:
 	var dir := DirAccess.open(path)
@@ -33,7 +33,7 @@ func _find_valid_files(dir: DirAccess, full_name: String) -> Array:
 
 
 func _is_dir_valid(dir_name: String) -> bool:
-	return not self._dir_blacklist.has(dir_name)
+	return not self._directory_blacklist.has(dir_name)
 
 func _is_file_valid(file_name: String) -> bool:
 	return self._allowed_extensions.has(file_name.get_extension())
