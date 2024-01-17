@@ -56,6 +56,7 @@ modulate = Color(0.368627, 0.388235, 0.411765, 1)
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 4
+tooltip_text = "Edit Configurations"
 focus_mode = 0
 texture_normal = ExtResource("3_m3cqi")
 script = ExtResource("4_qcmdj")
@@ -76,6 +77,6 @@ script = ExtResource("3_siqrh")
 [connection signal="highlight_prev" from="Panel/MarginContainer/VSplitContainer/HSplitContainer/SearchInput" to="Panel/MarginContainer/VSplitContainer/ScrollContainer/FileButtons" method="_on_highlight_prev"]
 [connection signal="selected" from="Panel/MarginContainer/VSplitContainer/HSplitContainer/SearchInput" to="Panel/MarginContainer/VSplitContainer/ScrollContainer/FileButtons" method="_on_selected"]
 [connection signal="text_changed" from="Panel/MarginContainer/VSplitContainer/HSplitContainer/SearchInput" to="Panel/MarginContainer/VSplitContainer/ScrollContainer/FileButtons" method="_on_search_input_text_changed"]
+[connection signal="button_down" from="Panel/MarginContainer/VSplitContainer/HSplitContainer/ConfigButton" to="Panel/MarginContainer/VSplitContainer/HSplitContainer/ConfigButton" method="_on_button_down"]
 [connection signal="mouse_entered" from="Panel/MarginContainer/VSplitContainer/HSplitContainer/ConfigButton" to="Panel/MarginContainer/VSplitContainer/HSplitContainer/ConfigButton" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="Panel/MarginContainer/VSplitContainer/HSplitContainer/ConfigButton" to="Panel/MarginContainer/VSplitContainer/HSplitContainer/ConfigButton" method="_on_mouse_exited"]
-[connection signal="pressed" from="Panel/MarginContainer/VSplitContainer/HSplitContainer/ConfigButton" to="Panel/MarginContainer/VSplitContainer/HSplitContainer/ConfigButton" method="_on_pressed"]

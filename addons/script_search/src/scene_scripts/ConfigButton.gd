@@ -11,5 +11,5 @@ func _on_mouse_entered():
 func _on_mouse_exited():
 	set_modulate(NORMAL_COLOR)
 
-func _on_pressed():
-	print_debug("PRESSED")
+func _on_button_down():
+	set_modulate(NORMAL_COLOR)
