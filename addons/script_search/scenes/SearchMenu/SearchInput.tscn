@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://o4ytvvnx6xjw"]
 
-[ext_resource type="Script" path="res://addons/script_search/src/scene_scripts/SearchInput.gd" id="1_dqd18"]
+[ext_resource type="Script" path="res://addons/script_search/src/scene_scripts/SearchMenu/SearchInput.gd" id="1_dqd18"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a6m1j"]
 bg_color = Color(0, 0, 0, 0)

@@ -6,7 +6,7 @@ signal script_selected
 signal search_text_updated
 
 const FileButtonCollection := preload("res://addons/script_search/src/FileButtonCollection.gd")
-const FileButtonScene := preload('res://addons/script_search/scenes/FileButton.tscn')
+const FileButtonScene := preload('res://addons/script_search/scenes/SearchMenu/FileButton.tscn')
 
 const SEARCH_MATCH_TIME := 0.05
 const BUTTONS_UPDATE_TIME := 0.02

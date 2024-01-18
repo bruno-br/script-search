@@ -1,10 +1,10 @@
 [gd_scene load_steps=6 format=3 uid="uid://dqlnvkakydt46"]
 
-[ext_resource type="Script" path="res://addons/script_search/src/scene_scripts/SearchBox.gd" id="1_2xgno"]
-[ext_resource type="PackedScene" uid="uid://o4ytvvnx6xjw" path="res://addons/script_search/scenes/SearchInput.tscn" id="2_1xhlp"]
+[ext_resource type="Script" path="res://addons/script_search/src/scene_scripts/SearchMenu/SearchBox.gd" id="1_2xgno"]
+[ext_resource type="PackedScene" uid="uid://o4ytvvnx6xjw" path="res://addons/script_search/scenes/SearchMenu/SearchInput.tscn" id="2_1xhlp"]
 [ext_resource type="Texture2D" uid="uid://c51e76x4r4f78" path="res://addons/script_search/res/icon_config.png" id="3_m3cqi"]
-[ext_resource type="Script" path="res://addons/script_search/src/scene_scripts/FileButtons.gd" id="3_siqrh"]
-[ext_resource type="Script" path="res://addons/script_search/src/scene_scripts/ConfigButton.gd" id="4_qcmdj"]
+[ext_resource type="Script" path="res://addons/script_search/src/scene_scripts/SearchMenu/FileButtons.gd" id="3_siqrh"]
+[ext_resource type="Script" path="res://addons/script_search/src/scene_scripts/SearchMenu/ConfigButton.gd" id="4_qcmdj"]
 
 [node name="SearchBox" type="Control"]
 layout_mode = 3

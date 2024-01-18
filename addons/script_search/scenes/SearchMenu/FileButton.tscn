@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://oyjhpfgrtbdu"]
 
-[ext_resource type="Script" path="res://addons/script_search/src/scene_scripts/FileButton.gd" id="1_rbymc"]
+[ext_resource type="Script" path="res://addons/script_search/src/scene_scripts/SearchMenu/FileButton.gd" id="1_rbymc"]
 
 [node name="MarginContainer" type="MarginContainer"]
 offset_right = 320.0

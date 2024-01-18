@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://t85l0174vh5i"]
+
+[ext_resource type="Script" path="res://addons/script_search/src/scene_scripts/ConfigMenu.gd" id="1_32tde"]
+
+[node name="ConfigMenu" type="PopupPanel"]
+title = "Script Search"
+initial_position = 2
+size = Vector2i(720, 360)
+visible = true
+script = ExtResource("1_32tde")
+
+[connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
