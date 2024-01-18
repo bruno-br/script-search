@@ -1,15 +1,14 @@
 @tool
 
-const ConfigManager := preload("res://addons/script_search/src/ConfigManager.gd")
-
 var _allowed_extensions := []
 var _directory_blacklist := []
 
-func _init():
-	var config_data := ConfigManager.load_and_normalize_config()
-	
-	self._allowed_extensions = config_data.get("allowed_extensions", [])
-	self._directory_blacklist = config_data.get("directory_blacklist", [])
+func _init(params = {}):
+	update_params(params)
+
+func update_params(params: Dictionary):
+	self._allowed_extensions = params.get("allowed_extensions", [])
+	self._directory_blacklist = params.get("directory_blacklist", [])
 
 func get_files(path: String, files := []) -> Array:
 	var dir := DirAccess.open(path)

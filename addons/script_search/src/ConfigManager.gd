@@ -2,6 +2,9 @@ const CONFIG_FILE_PATH = "res://addons/script_search/config.json"
 const DEFAULT_ALLOWED_EXTENSIONS := ["gd", "gdshader"]
 const DEFAULT_DIRECTORY_BLACKLIST := ["res://.godot", "res://addons"]
 
+static func load_config_file() -> Resource:
+	return load(CONFIG_FILE_PATH)
+
 static func load_and_normalize_config() -> Dictionary:
 	var file_content = read_config_file()
 	

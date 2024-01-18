@@ -3,6 +3,7 @@
 extends Control
 
 const FileSearcher := preload("res://addons/script_search/src/FileSearcher.gd")
+const ConfigManager := preload("res://addons/script_search/src/ConfigManager.gd")
 
 var _file_searcher = null
 var _matching_files = []
@@ -10,7 +11,10 @@ var _buttons_update_pending := false
 var _is_updating_matching_files := false
 
 func _ready():
-	self._file_searcher = FileSearcher.new()
+	self._file_searcher = FileSearcher.new(
+		ConfigManager.load_and_normalize_config()
+	)
+	
 	update_matching_files()
 	get_file_buttons().update_buttons(self._matching_files)
 
@@ -23,6 +27,12 @@ func close():
 	hide()
 	get_search_input().close()
 	if self._buttons_update_pending: _update_file_buttons()
+
+func update_config():
+	self._file_searcher.update_params(
+		ConfigManager.load_and_normalize_config()
+	)
+	update_matching_files()
 
 func update_matching_files():
 	if not self._is_updating_matching_files:
