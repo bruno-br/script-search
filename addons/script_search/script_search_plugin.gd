@@ -3,11 +3,15 @@
 extends EditorPlugin
 
 const SearchMenuScene := preload("./scenes/SearchMenu.tscn")
+const ConfigMenuScene := preload("./scenes/ConfigMenu.tscn")
+
 const ConfigManager := preload("./src/ConfigManager.gd")
 const InputManager := preload("./src/InputManager.gd")
 const UpdateManager := preload("./src/UpdateManager.gd")
 
 var _search_menu = null
+var _config_menu = null
+
 var _input_manager = null
 var _config_file = null
 var _update_manager = null
@@ -17,13 +21,28 @@ func _enter_tree() -> void:
 	var editor_interface := get_editor_interface()
 	
 	_setup_search_menu(editor_interface)
+	_setup_config_menu(editor_interface)
 	_setup_update_manager(editor_interface)
 	_setup_buttons()
+
+func _exit_tree() -> void:
+	for menu in [self._search_menu, self._config_menu]:
+		menu.hide()
+		menu.queue_free()
+
+func _input(event: InputEvent):
+	if self._input_manager.matches_action(event):
+		self._search_menu.show()
 
 func _setup_search_menu(editor_interface):
 	self._search_menu = SearchMenuScene.instantiate()
 	self._search_menu.hide()
 	editor_interface.get_base_control().add_child(self._search_menu)
+
+func _setup_config_menu(editor_interface):
+	self._config_menu = ConfigMenuScene.instantiate()
+	self._config_menu.hide()
+	editor_interface.get_base_control().add_child(self._config_menu)
 
 func _setup_buttons():
 	var search_box = self._search_menu.get_search_box()
@@ -39,19 +58,12 @@ func _setup_update_manager(editor_interface):
 		resource_saved
 	)
 
-func _exit_tree() -> void:
-	self._search_menu.hide()
-	self._search_menu.queue_free()
-
-func _input(event: InputEvent):
-	if self._input_manager.matches_action(event):
-		self._search_menu.show()
-
 func _on_script_selected(file_name: String):
 	_open_script(file_name, true)
 
 func _on_config_selected():
-	_open_script(ConfigManager.CONFIG_FILE_PATH)
+	self._search_menu.hide()
+	self._config_menu.show()
 
 func _open_script(file_name, show_on_file_system=false):
 	if not FileAccess.file_exists(file_name): return

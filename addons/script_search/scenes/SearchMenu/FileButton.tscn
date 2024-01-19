@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://oyjhpfgrtbdu"]
 
-[ext_resource type="Script" path="res://addons/script_search/src/scene_scripts/SearchMenu/FileButton.gd" id="1_rbymc"]
+[ext_resource type="Script" path="res://addons/script_search/src/scene_scripts/SearchMenu/FileButton.gd" id="1_ufy3k"]
 
 [node name="MarginContainer" type="MarginContainer"]
 offset_right = 320.0
@@ -9,7 +9,7 @@ theme_override_constants/margin_left = 2
 theme_override_constants/margin_top = 2
 theme_override_constants/margin_right = 6
 theme_override_constants/margin_bottom = 2
-script = ExtResource("1_rbymc")
+script = ExtResource("1_ufy3k")
 
 [node name="Button" type="Button" parent="."]
 layout_mode = 2

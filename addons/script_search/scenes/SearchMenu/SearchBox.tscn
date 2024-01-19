@@ -1,10 +1,10 @@
 [gd_scene load_steps=6 format=3 uid="uid://dqlnvkakydt46"]
 
-[ext_resource type="Script" path="res://addons/script_search/src/scene_scripts/SearchMenu/SearchBox.gd" id="1_2xgno"]
+[ext_resource type="Script" path="res://addons/script_search/src/scene_scripts/SearchMenu/SearchBox.gd" id="1_0s61u"]
 [ext_resource type="PackedScene" uid="uid://o4ytvvnx6xjw" path="res://addons/script_search/scenes/SearchMenu/SearchInput.tscn" id="2_1xhlp"]
 [ext_resource type="Texture2D" uid="uid://c51e76x4r4f78" path="res://addons/script_search/res/icon_config.png" id="3_m3cqi"]
-[ext_resource type="Script" path="res://addons/script_search/src/scene_scripts/SearchMenu/FileButtons.gd" id="3_siqrh"]
-[ext_resource type="Script" path="res://addons/script_search/src/scene_scripts/SearchMenu/ConfigButton.gd" id="4_qcmdj"]
+[ext_resource type="Script" path="res://addons/script_search/src/scene_scripts/SearchMenu/ConfigButton.gd" id="4_1h8oy"]
+[ext_resource type="Script" path="res://addons/script_search/src/scene_scripts/SearchMenu/FileButtons.gd" id="5_sdpfb"]
 
 [node name="SearchBox" type="Control"]
 layout_mode = 3
@@ -13,7 +13,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_2xgno")
+script = ExtResource("1_0s61u")
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 1
@@ -59,7 +59,7 @@ size_flags_vertical = 4
 tooltip_text = "Edit Configurations"
 focus_mode = 0
 texture_normal = ExtResource("3_m3cqi")
-script = ExtResource("4_qcmdj")
+script = ExtResource("4_1h8oy")
 
 [node name="ScrollContainer" type="ScrollContainer" parent="Panel/MarginContainer/VSplitContainer"]
 layout_mode = 2
@@ -71,7 +71,7 @@ vertical_scroll_mode = 2
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-script = ExtResource("3_siqrh")
+script = ExtResource("5_sdpfb")
 
 [connection signal="highlight_next" from="Panel/MarginContainer/VSplitContainer/HSplitContainer/SearchInput" to="Panel/MarginContainer/VSplitContainer/ScrollContainer/FileButtons" method="_on_highlight_next"]
 [connection signal="highlight_prev" from="Panel/MarginContainer/VSplitContainer/HSplitContainer/SearchInput" to="Panel/MarginContainer/VSplitContainer/ScrollContainer/FileButtons" method="_on_highlight_prev"]

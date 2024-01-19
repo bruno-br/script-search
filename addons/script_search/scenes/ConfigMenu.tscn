@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://t85l0174vh5i"]
+[gd_scene load_steps=3 format=3 uid="uid://t85l0174vh5i"]
 
 [ext_resource type="Script" path="res://addons/script_search/src/scene_scripts/ConfigMenu.gd" id="1_32tde"]
+[ext_resource type="PackedScene" uid="uid://k0f88yiebhx0" path="res://addons/script_search/scenes/ConfigMenu/ConfigBox.tscn" id="2_s2403"]
 
 [node name="ConfigMenu" type="PopupPanel"]
 title = "Script Search"
@@ -9,4 +10,8 @@ size = Vector2i(720, 360)
 visible = true
 script = ExtResource("1_32tde")
 
-[connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
+[node name="ConfigBox" parent="." instance=ExtResource("2_s2403")]
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 716.0
+offset_bottom = 356.0
