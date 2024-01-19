@@ -39,40 +39,44 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -352.0
-offset_top = 56.0
-offset_right = 352.0
-offset_bottom = 136.0
+offset_left = -320.0
+offset_top = 48.0
+offset_right = 320.0
+offset_bottom = 128.0
 grow_horizontal = 2
+param_name = "Allowed Extensions"
+param_key = "allowed_extensions"
 
 [node name="ConfigItem2" parent="Panel" instance=ExtResource("2_65aer")]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -352.0
-offset_top = 144.0
-offset_right = 352.0
-offset_bottom = 224.0
+offset_left = -320.0
+offset_top = 128.0
+offset_right = 320.0
+offset_bottom = 208.0
 grow_horizontal = 2
+param_name = "Directory Blacklist"
+param_key = "directory_blacklist"
 
-[node name="Button" type="Button" parent="Panel"]
+[node name="SaveButton" type="Button" parent="Panel"]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -112.0
-offset_top = -72.0
-offset_right = -18.0
-offset_bottom = -24.0
+offset_left = -184.0
+offset_top = -64.0
+offset_right = -16.0
+offset_bottom = -16.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_styles/normal = ExtResource("2_2cghi")
 text = "Save"
 
-[node name="Button2" type="Button" parent="Panel"]
+[node name="ResetButton" type="Button" parent="Panel"]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -80,10 +84,10 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = 16.0
-offset_top = -72.0
-offset_right = 110.0
-offset_bottom = -24.0
+offset_top = -64.0
+offset_right = 184.0
+offset_bottom = -16.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_styles/normal = ExtResource("2_2cghi")
-text = "Reset"
+text = "Reset Default Values"

@@ -13,7 +13,7 @@ script = ExtResource("1_6i7iq")
 [node name="SearchBox" parent="." instance=ExtResource("1_n5psp")]
 offset_left = 4.0
 offset_top = 4.0
-offset_right = -4.0
-offset_bottom = -4.0
+offset_right = 716.0
+offset_bottom = 356.0
 
 [connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
