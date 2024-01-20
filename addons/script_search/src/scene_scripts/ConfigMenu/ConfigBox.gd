@@ -30,6 +30,11 @@ func _update_param_value(node: Node, config: Dictionary, was_saved: bool):
 	node.set_param_value(str(param_value))
 	node.set_saved(was_saved)
 
+func _convert_string_to_array(str: String):
+	if not str.begins_with("["): str = "[" + str
+	if not str.ends_with("]"): str = str + "]"
+	return str_to_var(str)
+
 func _on_save_button_pressed():
 	var new_config_values := {}
 	
@@ -44,11 +49,6 @@ func _on_save_button_pressed():
 		item.set_saved(true)
 	
 	emit_signal("config_saved", new_config_values)
-
-func _convert_string_to_array(str: String):
-	if not str.begins_with("["): str = "[" + str
-	if not str.ends_with("]"): str = str + "]"
-	return str_to_var(str)
 
 func _on_cancel_button_pressed():
 	emit_signal("config_cancel")

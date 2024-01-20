@@ -55,7 +55,8 @@ func _setup_update_manager(editor_interface):
 	self._update_manager = UpdateManager.new(
 		self._search_menu.get_search_box(), 
 		resource_filesystem.filesystem_changed,
-		resource_saved
+		resource_saved,
+		self._config_menu.config_saved
 	)
 
 func _on_script_selected(file_name: String):
