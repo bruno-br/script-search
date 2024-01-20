@@ -1,5 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://k0f88yiebhx0"]
+[gd_scene load_steps=4 format=3 uid="uid://k0f88yiebhx0"]
 
+[ext_resource type="Script" path="res://addons/script_search/src/scene_scripts/ConfigMenu/ConfigBox.gd" id="1_422lu"]
 [ext_resource type="StyleBox" uid="uid://b35exh6rgt2py" path="res://addons/script_search/res/button_style.tres" id="2_2cghi"]
 [ext_resource type="PackedScene" uid="uid://de3uyftwf836k" path="res://addons/script_search/scenes/ConfigMenu/ConfigItem.tscn" id="2_65aer"]
 
@@ -10,6 +11,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_422lu")
 
 [node name="Panel" type="Panel" parent="."]
 clip_contents = true

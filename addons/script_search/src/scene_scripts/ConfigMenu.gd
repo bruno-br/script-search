@@ -1,11 +1,17 @@
+@tool
+
 extends PopupPanel
 
+const ConfigManager := preload("res://addons/script_search/src/ConfigManager.gd")
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	_update_from_config()
 
+func _on_visibility_changed():
+	_update_from_config()
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
+func _update_from_config():
+	$ConfigBox.update_values(
+		ConfigManager.load_and_normalize_config()
+	)
+

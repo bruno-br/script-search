@@ -1,8 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://de3uyftwf836k"]
+[gd_scene load_steps=2 format=3 uid="uid://de3uyftwf836k"]
 
-[ext_resource type="StyleBox" uid="uid://1cxeybyp3kbt" path="res://addons/script_search/res/input_style_focus.tres" id="1_2wbbi"]
 [ext_resource type="Script" path="res://addons/script_search/src/scene_scripts/ConfigMenu/ConfigItem.gd" id="1_p2ttu"]
-[ext_resource type="StyleBox" uid="uid://u5jaoae5mbft" path="res://addons/script_search/res/input_style.tres" id="1_yhk70"]
 
 [node name="ConfigItem" type="Control"]
 layout_mode = 3
@@ -26,13 +24,11 @@ text = "Key:"
 horizontal_alignment = 2
 max_lines_visible = 1
 
-[node name="TextEdit" type="TextEdit" parent="."]
+[node name="TextEdit" type="CodeEdit" parent="."]
 layout_mode = 2
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 144.0
 offset_top = 16.0
 size_flags_horizontal = 3
-theme_override_styles/normal = ExtResource("1_yhk70")
-theme_override_styles/focus = ExtResource("1_2wbbi")
 text = "Value"
