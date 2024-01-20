@@ -19,5 +19,8 @@ func get_param_key() -> String:
 func set_param_key(value: String): 
 	param_key = value
 
+func get_param_value() -> String:
+	return $TextEdit.get_text()
+
 func set_param_value(value: String):
 	$TextEdit.set_text(value)

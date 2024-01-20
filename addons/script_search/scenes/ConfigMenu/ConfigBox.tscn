@@ -41,10 +41,10 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -320.0
-offset_top = 48.0
+offset_left = -312.0
+offset_top = 32.0
 offset_right = 320.0
-offset_bottom = 128.0
+offset_bottom = 112.0
 grow_horizontal = 2
 param_name = "Allowed Extensions"
 param_key = "allowed_extensions"
@@ -54,10 +54,10 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -320.0
-offset_top = 128.0
+offset_left = -312.0
+offset_top = 112.0
 offset_right = 320.0
-offset_bottom = 208.0
+offset_bottom = 192.0
 grow_horizontal = 2
 param_name = "Directory Blacklist"
 param_key = "directory_blacklist"
@@ -69,14 +69,30 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -184.0
-offset_top = -64.0
-offset_right = -16.0
-offset_bottom = -16.0
+offset_left = -128.0
+offset_top = -128.0
+offset_right = -8.0
+offset_bottom = -80.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_styles/normal = ExtResource("2_2cghi")
 text = "Save"
+
+[node name="CancelButton" type="Button" parent="Panel"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = -128.0
+offset_right = 128.0
+offset_bottom = -80.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/normal = ExtResource("2_2cghi")
+text = "Cancel"
 
 [node name="ResetButton" type="Button" parent="Panel"]
 layout_mode = 1
@@ -85,11 +101,15 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = 16.0
+offset_left = -128.0
 offset_top = -64.0
-offset_right = 184.0
+offset_right = 128.0
 offset_bottom = -16.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_styles/normal = ExtResource("2_2cghi")
 text = "Reset Default Values"
+
+[connection signal="pressed" from="Panel/SaveButton" to="." method="_on_save_button_pressed"]
+[connection signal="pressed" from="Panel/CancelButton" to="." method="_on_cancel_button_pressed"]
+[connection signal="pressed" from="Panel/ResetButton" to="." method="_on_reset_button_pressed"]

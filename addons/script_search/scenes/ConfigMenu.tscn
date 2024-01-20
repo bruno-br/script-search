@@ -6,7 +6,7 @@
 [node name="ConfigMenu" type="PopupPanel"]
 title = "Script Search"
 initial_position = 2
-size = Vector2i(720, 330)
+size = Vector2i(720, 360)
 visible = true
 script = ExtResource("1_32tde")
 
@@ -15,5 +15,7 @@ offset_left = 4.0
 offset_top = 4.0
 offset_right = -4.0
 offset_bottom = -4.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
 [connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]

@@ -7,13 +7,9 @@ static func load_config_file() -> Resource:
 
 static func load_and_normalize_config() -> Dictionary:
 	var file_content = read_config_file()
+	var normalized_content = normalize_content(file_content)
 	
-	var normalized_content = {
-		"allowed_extensions": _get_allowed_extensions(file_content), 
-		"directory_blacklist": _get_directory_blacklist(file_content)
-	}
-	
-	save_config_file(normalized_content)
+	_save_config_file(normalized_content)
 	
 	return normalized_content
 
@@ -27,17 +23,18 @@ static func read_config_file() -> Dictionary:
 	
 	return json_content if json_content != null else {}
 
+static func normalize_content(content: Dictionary) -> Dictionary:
+	return {
+		"allowed_extensions": _get_allowed_extensions(content), 
+		"directory_blacklist": _get_directory_blacklist(content)
+	}
+
+static func save_config_file_normalized(data: Dictionary) -> void:
+	return _save_config_file(normalize_content(data))
+
 static func _parse_json(file):
 	if file == null: return null
 	return JSON.new().parse_string(file.get_as_text())
-
-static func save_config_file(data: Dictionary) -> void:
-	var json_string = JSON.stringify(data, "\t")
-	var file = FileAccess.open(CONFIG_FILE_PATH, FileAccess.WRITE)
-	
-	if file != null:
-		file.store_string(json_string)
-		file.close()
 
 static func _get_allowed_extensions(json_content):
 	var value = json_content.get("allowed_extensions")
@@ -50,3 +47,11 @@ static func _get_directory_blacklist(json_content):
 static func _normalize_string_array(array, default):
 	if not array is Array: return default
 	return array.filter(func(element): return element is String)
+
+static func _save_config_file(data: Dictionary) -> void:
+	var json_string = JSON.stringify(data, "\t")
+	var file = FileAccess.open(CONFIG_FILE_PATH, FileAccess.WRITE)
+	
+	if file != null:
+		file.store_string(json_string)
+		file.close()
