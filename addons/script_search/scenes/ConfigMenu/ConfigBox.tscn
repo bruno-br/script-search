@@ -48,6 +48,7 @@ offset_bottom = 112.0
 grow_horizontal = 2
 param_name = "Allowed Extensions"
 param_key = "allowed_extensions"
+param_description = "List of extensions to be included on the search "
 
 [node name="ConfigItem2" parent="Panel" instance=ExtResource("2_65aer")]
 layout_mode = 1
@@ -61,6 +62,7 @@ offset_bottom = 192.0
 grow_horizontal = 2
 param_name = "Directory Blacklist"
 param_key = "directory_blacklist"
+param_description = "List of directories that should NOT be included on the search"
 
 [node name="SaveButton" type="Button" parent="Panel"]
 layout_mode = 1
