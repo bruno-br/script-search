@@ -21,6 +21,7 @@ func _update_from_config(config_box):
 func _connect_signals(config_box):
 	config_box.config_saved.connect(_on_config_saved)
 	config_box.config_cancel.connect(_on_config_cancel)
+	config_box.config_reset.connect(_on_config_reset)
 
 func _on_config_saved(new_config: Dictionary):
 	ConfigManager.save_config_file_normalized(new_config)
@@ -28,3 +29,7 @@ func _on_config_saved(new_config: Dictionary):
 
 func _on_config_cancel():
 	hide()
+
+func _on_config_reset():
+	var default_content = ConfigManager.normalize_content({})
+	$ConfigBox.update_values(default_content)

@@ -3,9 +3,9 @@
 extends Control
 
 signal config_saved
+signal config_reset
 signal config_cancel
 
-var _config_content = null
 var _config_items = []
 
 func _ready():
@@ -14,17 +14,13 @@ func _ready():
 	)
 
 func update_values(config: Dictionary):
-	self._config_content = config
-	_do_update_values(config)
+	for item in self._config_items: _update_param_value(item, config)
 
 func _is_config_item(node: Node) -> bool:
 	return (
 		node.has_method("get_param_key")
 		&& node.has_method("set_param_value")
 	)
-
-func _do_update_values(config: Dictionary):
-	for item in self._config_items: _update_param_value(item, config)
 
 func _update_param_value(node: Node, config: Dictionary):
 	var param_key: String = node.get_param_key()
@@ -54,5 +50,4 @@ func _on_cancel_button_pressed():
 	emit_signal("config_cancel")
 
 func _on_reset_button_pressed():
-	if self._config_content != null:
-		_do_update_values(self._config_content)
+	emit_signal("config_reset")
