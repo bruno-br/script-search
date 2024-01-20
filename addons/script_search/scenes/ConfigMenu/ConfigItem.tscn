@@ -1,6 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://de3uyftwf836k"]
+[gd_scene load_steps=3 format=3 uid="uid://de3uyftwf836k"]
 
 [ext_resource type="Script" path="res://addons/script_search/src/scene_scripts/ConfigMenu/ConfigItem.gd" id="1_p2ttu"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_dah4x"]
+font_size = 12
 
 [node name="ConfigItem" type="Control"]
 layout_mode = 3
@@ -26,6 +29,21 @@ text = "Key:"
 horizontal_alignment = 2
 max_lines_visible = 1
 
+[node name="SaveIndicationLabel" type="Label" parent="."]
+visible = false
+layout_mode = 2
+anchor_bottom = 1.0
+offset_top = 38.0
+offset_right = 128.0
+grow_horizontal = 0
+grow_vertical = 2
+size_flags_vertical = 0
+theme_override_colors/font_shadow_color = Color(0.211765, 0.239216, 0.290196, 1)
+text = "(Not Saved)"
+label_settings = SubResource("LabelSettings_dah4x")
+horizontal_alignment = 2
+max_lines_visible = 1
+
 [node name="TextEdit" type="CodeEdit" parent="."]
 layout_mode = 2
 anchor_right = 1.0
@@ -34,3 +52,5 @@ offset_left = 144.0
 offset_top = 16.0
 size_flags_horizontal = 3
 text = "Value"
+
+[connection signal="text_changed" from="TextEdit" to="." method="_on_text_edit_text_changed"]

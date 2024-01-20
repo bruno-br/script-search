@@ -13,8 +13,9 @@ func _ready():
 		func(child): return _is_config_item(child)
 	)
 
-func update_values(config: Dictionary):
-	for item in self._config_items: _update_param_value(item, config)
+func update_values(config: Dictionary, was_saved=false):
+	for item in self._config_items: 
+		_update_param_value(item, config, was_saved)
 
 func _is_config_item(node: Node) -> bool:
 	return (
@@ -22,11 +23,12 @@ func _is_config_item(node: Node) -> bool:
 		&& node.has_method("set_param_value")
 	)
 
-func _update_param_value(node: Node, config: Dictionary):
+func _update_param_value(node: Node, config: Dictionary, was_saved: bool):
 	var param_key: String = node.get_param_key()
 	var param_value = config.get(param_key, [])
 	
 	node.set_param_value(str(param_value))
+	node.set_saved(was_saved)
 
 func _on_save_button_pressed():
 	var new_config_values := {}
@@ -38,6 +40,8 @@ func _on_save_button_pressed():
 		if not value is Array: value = ""
 		
 		new_config_values[key] = value
+		
+		item.set_saved(true)
 	
 	emit_signal("config_saved", new_config_values)
 

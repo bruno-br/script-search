@@ -15,7 +15,8 @@ func _on_visibility_changed():
 
 func _update_from_config(config_box):
 	config_box.update_values(
-		ConfigManager.load_and_normalize_config()
+		ConfigManager.load_and_normalize_config(),
+		true
 	)
 
 func _connect_signals(config_box):

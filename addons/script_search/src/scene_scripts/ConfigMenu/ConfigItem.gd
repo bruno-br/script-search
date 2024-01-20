@@ -31,3 +31,12 @@ func get_param_value() -> String:
 
 func set_param_value(value: String):
 	$TextEdit.set_text(value)
+
+func set_saved(was_saved: bool):
+	if was_saved:
+		$SaveIndicationLabel.hide()
+	else:
+		$SaveIndicationLabel.show()
+
+func _on_text_edit_text_changed():
+	set_saved(false)
