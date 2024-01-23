@@ -1,4 +1,4 @@
-const CONFIG_FILE_PATH = "res://addons/script_search/config.json"
+const CONFIG_FILE_PATH = "res://addons/script_search/.config.json"
 const DEFAULT_ALLOWED_EXTENSIONS := ["gd", "gdshader"]
 const DEFAULT_DIRECTORY_BLACKLIST := ["res://.godot", "res://addons"]
 
