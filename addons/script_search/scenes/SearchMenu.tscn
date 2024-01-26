@@ -1,19 +1,19 @@
-[gd_scene load_steps=3 format=3 uid="uid://crxcfe83u4hif"]
+[gd_scene load_steps=3 format=3 uid="uid://dc01ma6lpvals"]
 
-[ext_resource type="Script" path="res://addons/script_search/src/scene_scripts/SearchMenu.gd" id="1_6i7iq"]
-[ext_resource type="PackedScene" uid="uid://dqlnvkakydt46" path="res://addons/script_search/scenes/SearchMenu/SearchBox.tscn" id="1_n5psp"]
+[ext_resource type="Script" path="res://addons/script_search/src/scene_scripts/SearchMenu.gd" id="1_2ttnm"]
+[ext_resource type="PackedScene" uid="uid://dqlnvkakydt46" path="res://addons/script_search/scenes/SearchMenu/SearchBox.tscn" id="2_g1tib"]
 
 [node name="SearchMenu" type="PopupPanel"]
 title = "Script Search"
 initial_position = 2
 size = Vector2i(720, 360)
 visible = true
-script = ExtResource("1_6i7iq")
+script = ExtResource("1_2ttnm")
 
-[node name="SearchBox" parent="." instance=ExtResource("1_n5psp")]
+[node name="SearchBox" parent="." instance=ExtResource("2_g1tib")]
 offset_left = 4.0
 offset_top = 4.0
-offset_right = 716.0
-offset_bottom = 356.0
+offset_right = -4.0
+offset_bottom = -4.0
 
 [connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
