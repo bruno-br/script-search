@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://addons/script_search/src/scene_scripts/SearchMenu/SearchBox.gd" id="1_0s61u"]
 [ext_resource type="PackedScene" uid="uid://o4ytvvnx6xjw" path="res://addons/script_search/scenes/SearchMenu/SearchInput.tscn" id="2_1xhlp"]
-[ext_resource type="Texture2D" uid="uid://c51e76x4r4f78" path="res://addons/script_search/res/icon_config.png" id="3_m3cqi"]
+[ext_resource type="Texture2D" uid="uid://cuh2hgmuq00id" path="res://addons/script_search/res/icon_config.png" id="3_m3cqi"]
 [ext_resource type="Script" path="res://addons/script_search/src/scene_scripts/SearchMenu/ConfigButton.gd" id="4_1h8oy"]
 [ext_resource type="Script" path="res://addons/script_search/src/scene_scripts/SearchMenu/FileButtons.gd" id="5_sdpfb"]
 

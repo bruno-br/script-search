@@ -19,7 +19,6 @@ var _update_manager = null
 func _enter_tree() -> void:
 	self._input_manager = InputManager.new()
 	var editor_interface := get_editor_interface()
-	
 	_setup_search_menu(editor_interface)
 	_setup_config_menu(editor_interface)
 	_setup_update_manager(editor_interface)
@@ -33,6 +32,7 @@ func _exit_tree() -> void:
 func _input(event: InputEvent):
 	if self._input_manager.matches_action(event):
 		self._search_menu.show()
+		get_viewport().set_input_as_handled()
 
 func _setup_search_menu(editor_interface):
 	self._search_menu = SearchMenuScene.instantiate()
