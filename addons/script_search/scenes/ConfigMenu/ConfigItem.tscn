@@ -11,7 +11,6 @@ anchors_preset = 0
 offset_right = 384.0
 offset_bottom = 64.0
 size_flags_vertical = 0
-tooltip_text = "param desc"
 script = ExtResource("1_p2ttu")
 param_description = "param desc"
 

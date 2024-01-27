@@ -4,7 +4,6 @@
 [ext_resource type="Script" path="res://addons/script_search/src/scene_scripts/ConfigMenu/BoolConfigItem.gd" id="2_c01gq"]
 
 [node name="BoolConfigItem" instance=ExtResource("1_u34qa")]
-tooltip_text = "param description"
 script = ExtResource("2_c01gq")
 param_description = "param description"
 

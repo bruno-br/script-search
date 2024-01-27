@@ -56,7 +56,6 @@ modulate = Color(0.368627, 0.388235, 0.411765, 1)
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 4
-tooltip_text = "Edit Configurations"
 focus_mode = 0
 texture_normal = ExtResource("3_m3cqi")
 script = ExtResource("4_1h8oy")
