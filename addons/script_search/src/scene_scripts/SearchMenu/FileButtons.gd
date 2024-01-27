@@ -30,6 +30,7 @@ func update_buttons(file_names: Array, is_case_sensitive: bool):
 func _add_button(file_name):
 	var file_button = FileButtonScene.instantiate()
 	file_button.set_file_name(file_name)
+	file_button.hide()
 	
 	file_button.script_selected.connect(_on_script_selected)
 	file_button.button_hovered.connect(_on_button_hovered)

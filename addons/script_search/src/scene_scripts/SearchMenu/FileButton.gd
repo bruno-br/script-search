@@ -45,7 +45,7 @@ func _on_mouse_entered():
 	emit_signal("button_hovered", self)
 
 func _on_search_text_updated(new_text: String, is_case_sensitive: bool):
-	if new_text.is_empty() || _file_name_matches_text(new_text, is_case_sensitive):
+	if not new_text.is_empty() && _file_name_matches_text(new_text, is_case_sensitive):
 		show()
 	else:
 		hide()
