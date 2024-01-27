@@ -44,8 +44,12 @@ func _on_button_pressed():
 func _on_mouse_entered():
 	emit_signal("button_hovered", self)
 
-func _on_search_text_updated(new_text: String):
-	if new_text.is_empty() || self._file_name.contains(new_text):
+func _on_search_text_updated(new_text: String, is_case_sensitive: bool):
+	if new_text.is_empty() || _file_name_matches_text(new_text, is_case_sensitive):
 		show()
 	else:
 		hide()
+
+func _file_name_matches_text(text: String, is_case_sensitive: bool) -> bool:
+	if is_case_sensitive: return self._file_name.contains(text)
+	return self._file_name.to_lower().contains(text.to_lower())

@@ -17,13 +17,15 @@ var _highlighted_button = null
 var _search_text: String = ""
 var _search_update_timer: SceneTreeTimer = null
 var _visible_buttons_update_timer: SceneTreeTimer = null
+var _is_case_sensitive := false
 
 func open():
 	_highlight_file_button(self._file_buttons.get_first_visible())
 
-func update_buttons(file_names: Array):
+func update_buttons(file_names: Array, is_case_sensitive: bool):
 	_clear_buttons()
 	for file_name in file_names: _add_button(file_name)
+	self._is_case_sensitive = is_case_sensitive
 
 func _add_button(file_name):
 	var file_button = FileButtonScene.instantiate()
@@ -86,7 +88,11 @@ func _on_search_input_text_changed(new_text):
 		
 		await self._search_update_timer.timeout
 		
-		emit_signal("search_text_updated", self._search_text)
+		emit_signal(
+			"search_text_updated", 
+			self._search_text, 
+			self._is_case_sensitive
+		)
 		
 		self._search_update_timer = null
 
