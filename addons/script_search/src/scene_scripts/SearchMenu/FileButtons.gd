@@ -64,18 +64,6 @@ func _move_highlight(method):
 		self._file_buttons.call(method, self._highlighted_button)
 	)
 
-func _highlight_file_button(file_button):
-	if self._highlighted_button == file_button: return
-	
-	if self._highlighted_button != null:
-		self._highlighted_button.set_highlight(false)
-	
-	if file_button != null:
-		file_button.set_highlight(true)
-		get_parent().ensure_control_visible(file_button)
-	
-	self._highlighted_button = file_button
-
 func _on_selected():
 	if self._highlighted_button != null:
 		self._highlighted_button.select()
@@ -98,17 +86,43 @@ func _on_search_input_text_changed(new_text):
 
 func _on_button_visibility_changed():
 	if _highlighted_button_is_invisible(): _highlight_file_button(null)
-	
-	if self._visible_buttons_update_timer == null:
-		self._visible_buttons_update_timer = get_tree().create_timer(BUTTONS_UPDATE_TIME)
-		
-		await self._visible_buttons_update_timer.timeout
-		
-		self._file_buttons.update_visible_elements()
-		self._visible_buttons_update_timer = null
+	_try_update_visible_buttons()
 
 func _highlighted_button_is_invisible() -> bool:
 	return (
 		self._highlighted_button != null 
 		&& not self._highlighted_button.is_visible()
 	)
+
+func _try_update_visible_buttons():
+	if self._visible_buttons_update_timer != null: return
+	
+	self._visible_buttons_update_timer = get_tree().create_timer(BUTTONS_UPDATE_TIME)
+	
+	await self._visible_buttons_update_timer.timeout
+	_do_update_visible_buttons()
+	
+	self._visible_buttons_update_timer = null
+
+func _do_update_visible_buttons():
+	self._file_buttons.update_visible_elements()
+	
+	if self._highlighted_button == null || _highlighted_button_is_invisible():
+		_highlight_file_button(self._file_buttons.get_first_visible())
+	else:
+		_ensure_is_visible(self._highlighted_button)
+
+func _highlight_file_button(file_button):
+	if self._highlighted_button == file_button: return
+	
+	if self._highlighted_button != null:
+		self._highlighted_button.set_highlight(false)
+	
+	if file_button != null:
+		file_button.set_highlight(true)
+		_ensure_is_visible(file_button)
+	
+	self._highlighted_button = file_button
+
+func _ensure_is_visible(file_button):
+	get_parent().ensure_control_visible(file_button)
