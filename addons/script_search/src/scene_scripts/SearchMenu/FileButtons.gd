@@ -85,14 +85,8 @@ func _on_search_input_text_changed(new_text):
 		self._search_update_timer = null
 
 func _on_button_visibility_changed():
-	if _highlighted_button_is_invisible(): _highlight_file_button(null)
+	if self._highlighted_button != null: _highlight_file_button(null)
 	_try_update_visible_buttons()
-
-func _highlighted_button_is_invisible() -> bool:
-	return (
-		self._highlighted_button != null 
-		&& not self._highlighted_button.is_visible()
-	)
 
 func _try_update_visible_buttons():
 	if self._visible_buttons_update_timer != null: return
@@ -106,11 +100,7 @@ func _try_update_visible_buttons():
 
 func _do_update_visible_buttons():
 	self._file_buttons.update_visible_elements()
-	
-	if self._highlighted_button == null || _highlighted_button_is_invisible():
-		_highlight_file_button(self._file_buttons.get_first_visible())
-	else:
-		_ensure_is_visible(self._highlighted_button)
+	_highlight_file_button(self._file_buttons.get_first_visible())
 
 func _highlight_file_button(file_button):
 	if self._highlighted_button == file_button: return
