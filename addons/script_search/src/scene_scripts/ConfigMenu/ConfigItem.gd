@@ -26,10 +26,10 @@ func set_param_description(value: String):
 	param_description = value
 	set_tooltip_text(value)
 
-func get_param_value() -> String:
+func get_param_value():
 	return $TextEdit.get_text()
 
-func set_param_value(value: String):
+func set_param_value(value):
 	$TextEdit.set_text(value)
 
 func set_saved(was_saved: bool):

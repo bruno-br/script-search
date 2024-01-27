@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://k0f88yiebhx0"]
+[gd_scene load_steps=5 format=3 uid="uid://k0f88yiebhx0"]
 
 [ext_resource type="Script" path="res://addons/script_search/src/scene_scripts/ConfigMenu/ConfigBox.gd" id="1_422lu"]
 [ext_resource type="StyleBox" uid="uid://b35exh6rgt2py" path="res://addons/script_search/res/button_style.tres" id="2_2cghi"]
 [ext_resource type="PackedScene" uid="uid://de3uyftwf836k" path="res://addons/script_search/scenes/ConfigMenu/ConfigItem.tscn" id="2_65aer"]
+[ext_resource type="PackedScene" uid="uid://cnt62f3vr1560" path="res://addons/script_search/scenes/ConfigMenu/BoolConfigItem.tscn" id="3_ddwah"]
 
 [node name="ConfigBox" type="Control"]
 layout_mode = 3
@@ -46,6 +47,7 @@ offset_top = 32.0
 offset_right = 320.0
 offset_bottom = 112.0
 grow_horizontal = 2
+tooltip_text = "List of extensions to be included on the search "
 param_name = "Allowed Extensions"
 param_key = "allowed_extensions"
 param_description = "List of extensions to be included on the search "
@@ -60,9 +62,25 @@ offset_top = 112.0
 offset_right = 320.0
 offset_bottom = 192.0
 grow_horizontal = 2
+tooltip_text = "List of directories that should NOT be included on the search"
 param_name = "Directory Blacklist"
 param_key = "directory_blacklist"
 param_description = "List of directories that should NOT be included on the search"
+
+[node name="BoolConfigItem" parent="Panel" instance=ExtResource("3_ddwah")]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -312.0
+offset_top = 192.0
+offset_right = 320.0
+offset_bottom = 256.0
+grow_horizontal = 2
+tooltip_text = "When enabled, differentiates upper and lower case text"
+param_name = "Case Sensitive"
+param_key = "case_sensitive"
+param_description = "When enabled, differentiates upper and lower case text"
 
 [node name="SaveButton" type="Button" parent="Panel"]
 layout_mode = 1

@@ -27,7 +27,9 @@ func _update_param_value(node: Node, config: Dictionary, was_saved: bool):
 	var param_key: String = node.get_param_key()
 	var param_value = config.get(param_key, [])
 	
-	node.set_param_value(str(param_value))
+	if typeof(param_value) != TYPE_BOOL: param_value = str(param_value)
+	
+	node.set_param_value(param_value)
 	node.set_saved(was_saved)
 
 func _convert_string_to_array(str: String):
@@ -40,15 +42,17 @@ func _on_save_button_pressed():
 	
 	for item in self._config_items: 
 		var key = item.get_param_key()
-		var string_value = item.get_param_value()
-		var value = _convert_string_to_array(string_value)
-		if not value is Array: value = ""
-		
-		new_config_values[key] = value
-		
+		new_config_values[key] = _get_item_value(item)
 		item.set_saved(true)
 	
 	emit_signal("config_saved", new_config_values)
+
+func _get_item_value(item):
+	var raw_value = item.get_param_value()
+	if typeof(raw_value) == TYPE_BOOL: return raw_value
+	
+	var arr_value = _convert_string_to_array(raw_value)
+	return arr_value if arr_value is Array else ""
 
 func _on_cancel_button_pressed():
 	emit_signal("config_cancel")

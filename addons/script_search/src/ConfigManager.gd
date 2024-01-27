@@ -1,6 +1,7 @@
 const CONFIG_FILE_PATH = "res://addons/script_search/.config.json"
 const DEFAULT_ALLOWED_EXTENSIONS := ["gd", "gdshader"]
 const DEFAULT_DIRECTORY_BLACKLIST := ["res://.godot", "res://addons"]
+const DEFAULT_CASE_SENSITIVE := false
 
 static func load_config_file() -> Resource:
 	return load(CONFIG_FILE_PATH)
@@ -26,7 +27,8 @@ static func read_config_file() -> Dictionary:
 static func normalize_content(content: Dictionary) -> Dictionary:
 	return {
 		"allowed_extensions": _get_allowed_extensions(content), 
-		"directory_blacklist": _get_directory_blacklist(content)
+		"directory_blacklist": _get_directory_blacklist(content),
+		"case_sensitive": _get_case_sensitive(content)
 	}
 
 static func save_config_file_normalized(data: Dictionary) -> void:
@@ -51,6 +53,10 @@ static func _get_allowed_extensions(json_content):
 static func _get_directory_blacklist(json_content):
 	var value = json_content.get("directory_blacklist")
 	return _normalize_string_array(value, DEFAULT_DIRECTORY_BLACKLIST)
+
+static func _get_case_sensitive(json_content):
+	var value = json_content.get("case_sensitive")
+	return value if typeof(value) == TYPE_BOOL else false
 
 static func _normalize_string_array(array, default):
 	if not array is Array: return default

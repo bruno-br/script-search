@@ -1,0 +1,29 @@
+[gd_scene load_steps=3 format=3 uid="uid://cnt62f3vr1560"]
+
+[ext_resource type="PackedScene" uid="uid://de3uyftwf836k" path="res://addons/script_search/scenes/ConfigMenu/ConfigItem.tscn" id="1_u34qa"]
+[ext_resource type="Script" path="res://addons/script_search/src/scene_scripts/ConfigMenu/BoolConfigItem.gd" id="2_c01gq"]
+
+[node name="BoolConfigItem" instance=ExtResource("1_u34qa")]
+tooltip_text = "param description"
+script = ExtResource("2_c01gq")
+param_description = "param description"
+
+[node name="Label" parent="." index="0"]
+offset_top = 16.0
+text = "Param: "
+
+[node name="TextEdit" parent="." index="2"]
+visible = false
+
+[node name="CheckButton" type="CheckButton" parent="." index="3"]
+layout_mode = 1
+anchors_preset = -1
+anchor_bottom = 1.0
+offset_right = 135.0
+offset_bottom = -21.0
+grow_vertical = 2
+scale = Vector2(1.5, 1.5)
+focus_mode = 0
+vertical_icon_alignment = 0
+
+[connection signal="toggled" from="CheckButton" to="." method="_on_check_button_toggled"]
