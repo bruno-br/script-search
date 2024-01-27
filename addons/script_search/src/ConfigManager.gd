@@ -35,7 +35,7 @@ static func save_config_file_normalized(data: Dictionary) -> void:
 	return save_config_file(normalize_content(data))
 
 static func save_config_file(normalized_data: Dictionary) -> void:
-	var json_string = JSON.stringify(normalized_data, "\t")
+	var json_string = JSON.stringify(normalized_data)
 	var file = FileAccess.open(CONFIG_FILE_PATH, FileAccess.WRITE)
 	
 	if file != null:
