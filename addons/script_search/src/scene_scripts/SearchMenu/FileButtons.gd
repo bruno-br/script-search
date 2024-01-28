@@ -6,12 +6,16 @@ signal script_selected
 signal search_text_updated
 
 const FileButtonCollection := preload("res://addons/script_search/src/FileButtonCollection.gd")
+const Queue := preload("res://addons/script_search/src/Queue.gd")
+
 const FileButtonScene := preload('res://addons/script_search/scenes/SearchMenu/FileButton.tscn')
+const RecentFileButtonScene := preload('res://addons/script_search/scenes/SearchMenu/RecentFileButton.tscn')
 
 const SEARCH_MATCH_TIME := 0.05
 const BUTTONS_UPDATE_TIME := 0.02
 
 var _file_buttons = FileButtonCollection.new()
+var _recent_files = Queue.new()
 var _highlighted_button = null
 
 var _search_text: String = ""
@@ -20,17 +24,33 @@ var _visible_buttons_update_timer: SceneTreeTimer = null
 var _is_case_sensitive := false
 
 func open():
+	show()
 	_highlight_file_button(self._file_buttons.get_first_visible())
+	_update_recent_file_buttons()
+
+func close():
+	hide()
 
 func update_buttons(file_names: Array, is_case_sensitive: bool):
 	_clear_buttons()
-	for file_name in file_names: _add_button(file_name)
+	for file_name in file_names: _add_file_button(file_name)
 	self._is_case_sensitive = is_case_sensitive
 
-func _add_button(file_name):
-	var file_button = FileButtonScene.instantiate()
+func _add_file_button(file_name):
+	var file_button = _build_button(file_name, FileButtonScene)
+	self._file_buttons.append(file_button)
+
+func _update_recent_file_buttons():
+	for file_name in self._recent_files.get_elements(): 
+		_add_recent_file_button(file_name)
+
+func _add_recent_file_button(file_name):
+	var recent_file_button = _build_button(file_name, RecentFileButtonScene)
+	hidden.connect(recent_file_button._on_search_box_hidden)
+
+func _build_button(file_name, scene):
+	var file_button = scene.instantiate()
 	file_button.set_file_name(file_name)
-	file_button.hide()
 	
 	file_button.script_selected.connect(_on_script_selected)
 	file_button.button_hovered.connect(_on_button_hovered)
@@ -38,26 +58,26 @@ func _add_button(file_name):
 	search_text_updated.connect(file_button._on_search_text_updated)
 	
 	add_child(file_button)
-	self._file_buttons.append(file_button)
+	
+	return file_button
 
 func _clear_buttons():
-	for child in get_children():
-		child.hide()
-		child.queue_free()
+	for child in get_children(): child.remove()
 	self._file_buttons.update([])
 
-func _on_script_selected(script):
-	emit_signal("script_selected", script)
+func _on_script_selected(file_name):
+	self._recent_files.push(file_name)
+	emit_signal("script_selected", file_name)
 
 func _on_button_hovered(file_button):
 	_highlight_file_button(file_button)
 
 func _on_highlight_prev():
 	_move_highlight("get_prev_visible")
-
+	
 func _on_highlight_next():
 	_move_highlight("get_next_visible")
-
+	
 func _move_highlight(method):
 	if not self._file_buttons.has_visible(): return
 	

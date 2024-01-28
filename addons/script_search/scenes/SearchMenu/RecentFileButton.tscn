@@ -1,0 +1,7 @@
+[gd_scene load_steps=3 format=3 uid="uid://d34gcb4nl3ucn"]
+
+[ext_resource type="PackedScene" uid="uid://oyjhpfgrtbdu" path="res://addons/script_search/scenes/SearchMenu/FileButton.tscn" id="1_62d44"]
+[ext_resource type="Script" path="res://addons/script_search/src/scene_scripts/SearchMenu/RecentFileButton.gd" id="2_5qrjw"]
+
+[node name="MarginContainer" instance=ExtResource("1_62d44")]
+script = ExtResource("2_5qrjw")

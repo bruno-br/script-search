@@ -7,6 +7,13 @@ signal button_hovered
 
 var _file_name = ""
 
+func _ready():
+	hide()
+
+func remove():
+	hide()
+	queue_free()
+
 func set_file_name(full_name: String):
 	self._file_name = full_name
 	var simple_name = full_name.get_file()

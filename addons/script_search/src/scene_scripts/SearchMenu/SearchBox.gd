@@ -24,6 +24,7 @@ func open():
 func close():
 	hide()
 	get_search_input().close()
+	get_file_buttons().close()
 	if self._buttons_update_pending: _update_file_buttons()
 
 func update_config():
