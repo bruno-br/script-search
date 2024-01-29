@@ -2,8 +2,6 @@
 
 extends Control
 
-const OsHelper := preload("res://addons/script_search/src/OsHelper.gd")
-
 @export var param_name := "Param": 
 		set = set_param_name
 
@@ -26,7 +24,6 @@ func set_param_key(value: String):
 
 func set_param_description(value: String): 
 	param_description = value
-	OsHelper.on_windows(func(): set_tooltip_text(value))
 
 func get_param_value():
 	return $TextEdit.get_text()
