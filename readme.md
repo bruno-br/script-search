@@ -24,8 +24,21 @@ You can easily edit the Configurations by clicking the config button on the Sear
 
 This will open the Configuration Window, where you can change the parameters:
 
-  - `Allowed Extensions`: What extensions should be included in the search. Default: `["gd", "gdshader"]`
-  - `Directory Blacklist`: What directories should not be included in the search. Default: `["res://.godot", "res://addons"]`
+  - `Allowed Extensions`: What extensions should be included in the search. 
+    
+    Default: `["gd", "gdshader"]`
+  
+  - `Directory Blacklist`: What directories should not be included in the search. 
+    
+    Default: `["res://.godot", "res://addons"]`
+  
+  - `Case Sensitive`: When enabled, differentiates upper and lower case text.
+    
+    Default: `false`
+  
+![Configuration Menu](docs/img-03.png)
+
+Click the `Save` button to apply the changes made to the configurations.
 
 ### Changing the shortcut
 
@@ -33,7 +46,7 @@ To modify the default shortcut, navigate to `Project > Project Settings`.
 
 In the `Input Map` tab, add a new action called `addon_script_search_open` and assign an event to it, with the desired key combination:
 
-![Alt text](docs/img-04.png)
+![Changing default shortcut](docs/img-04.png)
 
 Reload the plugin, and the new shortcut should take effect.
 
