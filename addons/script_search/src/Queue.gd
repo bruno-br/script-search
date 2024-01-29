@@ -17,8 +17,6 @@ func push(new_element):
 		0: pass
 		-1: _push_and_handle_size(new_element)
 		_: _move_to_front(index)
-	
-	print_debug(self._elements)
 
 func _push_and_handle_size(element):
 	self._elements.push_front(element)
