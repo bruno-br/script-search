@@ -1,4 +1,4 @@
-const DEFAULT_MAX_SIZE = 5
+const DEFAULT_MAX_SIZE = 8
 
 var _max_size := DEFAULT_MAX_SIZE
 var _elements := []
