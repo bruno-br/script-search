@@ -6,11 +6,15 @@
 [node name="ConfigMenu" type="PopupPanel"]
 title = "Script Search"
 initial_position = 2
-size = Vector2i(720, 480)
+size = Vector2i(720, 420)
 visible = true
 script = ExtResource("1_32tde")
 
 [node name="ConfigBox" parent="." instance=ExtResource("2_s2403")]
+offset_left = 4.0
+offset_top = 4.0
+offset_right = -4.0
+offset_bottom = -4.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
