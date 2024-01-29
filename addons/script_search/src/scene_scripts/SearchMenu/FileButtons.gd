@@ -26,6 +26,7 @@ var _is_case_sensitive := false
 func open():
 	show()
 	_highlight_file_button(self._file_buttons.get_first_visible())
+	_update_recent_files()
 	_update_recent_file_buttons()
 
 func close():
@@ -39,6 +40,15 @@ func update_buttons(file_names: Array, is_case_sensitive: bool):
 func _add_file_button(file_name):
 	var file_button = _build_button(file_name, FileButtonScene)
 	self._file_buttons.append(file_button)
+
+func _update_recent_files():
+	var file_names = self._recent_files.get_elements()
+	var valid_file_names = file_names.filter(
+		func(file_name): return FileAccess.file_exists(file_name)
+	)
+	
+	if file_names.size() != valid_file_names.size():
+		self._recent_files = Queue.new(valid_file_names)
 
 func _update_recent_file_buttons():
 	var first = null

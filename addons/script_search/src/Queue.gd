@@ -3,7 +3,7 @@ const DEFAULT_MAX_SIZE = 5
 var _max_size := DEFAULT_MAX_SIZE
 var _elements := []
 
-func _ready(elements=[], max_size=DEFAULT_MAX_SIZE):
+func _init(elements=[], max_size=DEFAULT_MAX_SIZE):
 	self._elements = elements
 	self._max_size = max_size
 
