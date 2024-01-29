@@ -17,6 +17,7 @@ const BUTTONS_UPDATE_TIME := 0.02
 var _file_buttons = FileButtonCollection.new()
 var _recent_files = Queue.new()
 var _highlighted_button = null
+var _first_recent_file_button = null
 
 var _search_text: String = ""
 var _search_update_timer: SceneTreeTimer = null
@@ -51,22 +52,25 @@ func _update_recent_files():
 		self._recent_files = Queue.new(valid_file_names)
 
 func _update_recent_file_buttons():
-	var first = null
 	var last = null
+	
+	self._first_recent_file_button = null
 	
 	for file_name in self._recent_files.get_elements():
 		var file_button = _build_recent_file_button(file_name)
 		_link_recent_file_buttons(last, file_button)
-		
-		if first == null: first = file_button
 		last = file_button
 	
-	_highlight_file_button(first)
-	_link_recent_file_buttons(last, first)
+	_highlight_file_button(self._first_recent_file_button)
+	_link_recent_file_buttons(last, self._first_recent_file_button)
 
 func _build_recent_file_button(file_name, previous=null):
 	var recent_file_button = _build_button(file_name, RecentFileButtonScene)
 	hidden.connect(recent_file_button._on_search_box_hidden)
+	
+	if self._first_recent_file_button == null:
+		self._first_recent_file_button = recent_file_button
+	
 	return recent_file_button
 
 func _link_recent_file_buttons(prev, next):
@@ -170,7 +174,7 @@ func _do_update_visible_buttons():
 	if self._file_buttons.has_visible():
 		_highlight_file_button(self._file_buttons.get_first_visible())
 	elif not _is_highlighted_button_visible():
-		_highlight_file_button(null)
+		_highlight_file_button(self._first_recent_file_button)
 
 func _is_highlighted_button_visible() -> bool:
 	return (
