@@ -60,7 +60,7 @@ func _on_search_text_updated(new_text: String, is_case_sensitive: bool):
 func _file_name_matches_text(text: String, is_case_sensitive: bool) -> bool:
 	var file_name = self._file_name
 	
-	if is_case_sensitive: 
+	if not is_case_sensitive:
 		text = text.to_lower()
 		file_name = file_name.to_lower()
 	
