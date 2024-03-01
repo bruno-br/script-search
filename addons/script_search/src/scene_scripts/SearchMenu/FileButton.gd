@@ -73,7 +73,7 @@ func _file_name_matches_text(text: String, is_case_sensitive: bool) -> bool:
 func _file_name_contains_term(file_name: String, term: String) -> bool:
 	if term.begins_with(":"):
 		return _compare_file_name_without_path(file_name, term)
-	return self._file_name.contains(term)
+	return file_name.contains(term)
 
 func _compare_file_name_without_path(file_name: String, term: String):
 	file_name = file_name.get_file()
