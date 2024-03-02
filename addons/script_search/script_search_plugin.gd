@@ -13,8 +13,8 @@ var _search_menu = null
 var _config_menu = null
 
 var _input_manager = null
-var _config_file = null
 var _update_manager = null
+var _config_file = null
 
 func _enter_tree() -> void:
 	self._input_manager = InputManager.new()

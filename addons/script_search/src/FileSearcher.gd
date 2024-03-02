@@ -30,7 +30,6 @@ func _find_valid_files(dir: DirAccess, full_name: String) -> Array:
 		return get_files(full_name) if _is_dir_valid(full_name) else []
 	return [full_name] if _is_file_valid(full_name) else []
 
-
 func _is_dir_valid(dir_name: String) -> bool:
 	return not self._directory_blacklist.has(dir_name)
 
