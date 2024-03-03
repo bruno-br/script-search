@@ -1,3 +1,5 @@
+extends RefCounted
+
 var _cooldown_instances := {}
 
 const DEFAULT_COOLDOWN = 0.1
