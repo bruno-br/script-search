@@ -5,6 +5,8 @@ extends MarginContainer
 signal script_selected
 signal button_hovered
 
+const TextMatcher := preload("res://addons/script_search/src/TextMatcher.gd")
+
 var _file_name = ""
 
 func _ready():
@@ -58,25 +60,4 @@ func _on_search_text_updated(new_text: String, is_case_sensitive: bool):
 		hide()
 
 func _file_name_matches_text(text: String, is_case_sensitive: bool) -> bool:
-	var file_name = self._file_name
-	
-	if not is_case_sensitive:
-		text = text.to_lower()
-		file_name = file_name.to_lower()
-	
-	for search_term in text.split(" "):
-		if search_term.is_empty(): continue
-		if not _file_name_contains_term(file_name, search_term): return false
-	
-	return true
-
-func _file_name_contains_term(file_name: String, term: String) -> bool:
-	if term.begins_with(":"):
-		return _compare_file_name_without_path(file_name, term)
-	return file_name.contains(term)
-
-func _compare_file_name_without_path(file_name: String, term: String):
-	file_name = file_name.get_file()
-	term = term.trim_prefix(":")
-	
-	return file_name.contains(term)
+	return TextMatcher.matches(self._file_name, text, is_case_sensitive)
