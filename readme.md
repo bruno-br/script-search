@@ -16,6 +16,16 @@ Write part of the file name and the search results will be filtered.
 
 Navigate with `Up` / `Down` Arrows and press `Enter` to select a file. The file will open in the script editor.
 
+### Special Characters
+
+- `:` - Use a colon as the first character to match only the file base name, ignoring the rest of the path.
+
+  For example, searching `:weapon` would match `weapon.gd` but not `weapon/sword.gd`.
+
+- `,` - Use a comma between terms to perform a multi-term search.
+
+  For example, searching `test, weapon` would only match files containing both `test` and `weapon` in their names or paths.
+
 ### Changing the Configurations
 
 You can easily edit the Configurations by clicking the config button on the Search Window:
@@ -25,16 +35,16 @@ You can easily edit the Configurations by clicking the config button on the Sear
 This will open the Configuration Window, where you can change the parameters:
 
   - `Allowed Extensions`: What extensions should be included in the search. 
-    
-    Default: `["gd", "gdshader"]`
+	
+	Default: `["gd", "gdshader"]`
   
   - `Directory Blacklist`: What directories should not be included in the search. 
-    
-    Default: `["res://.godot", "res://addons"]`
+	
+	Default: `["res://.godot", "res://addons"]`
   
   - `Case Sensitive`: When enabled, differentiates upper and lower case text.
-    
-    Default: `false`
+	
+	Default: `false`
   
 ![Configuration Menu](docs/img-03.png)
 
