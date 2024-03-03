@@ -5,6 +5,7 @@ extends VBoxContainer
 signal script_selected
 signal search_text_updated
 
+const CooldownHelper := preload("res://addons/script_search/src/CooldownHelper.gd")
 const FileButtonsHighlighter := preload("res://addons/script_search/src/file_buttons/Highlighter.gd")
 const FileButtonCollection := preload("res://addons/script_search/src/FileButtonCollection.gd")
 const Queue := preload("res://addons/script_search/src/Queue.gd")
@@ -15,6 +16,11 @@ const RecentFileButtonScene := preload('res://addons/script_search/scenes/Search
 const SEARCH_MATCH_TIME := 0.05
 const BUTTONS_UPDATE_TIME := 0.02
 
+var _cooldown_helper = CooldownHelper.new({
+	"search_update": SEARCH_MATCH_TIME,
+	"visible_buttons_update": BUTTONS_UPDATE_TIME
+})
+
 var _file_buttons_highlighter = FileButtonsHighlighter.new(self)
 var _file_buttons = FileButtonCollection.new()
 var _recent_files = Queue.new()
@@ -23,8 +29,6 @@ var _highlighted_button = null
 var _first_recent_file_button = null
 
 var _search_text: String = ""
-var _search_update_timer: SceneTreeTimer = null
-var _visible_buttons_update_timer: SceneTreeTimer = null
 var _is_case_sensitive := false
 
 func open():
@@ -127,32 +131,20 @@ func _on_selected():
 func _on_search_input_text_changed(new_text):
 	self._search_text = new_text
 	
-	if self._search_update_timer == null:
-		self._search_update_timer = get_tree().create_timer(SEARCH_MATCH_TIME)
-		
-		await self._search_update_timer.timeout
-		
-		emit_signal(
-			"search_text_updated", 
-			self._search_text, 
-			self._is_case_sensitive
-		)
-		
-		self._search_update_timer = null
+	self._cooldown_helper.call_with_cooldown(
+		get_tree(),
+		"search_update",
+		func(): emit_signal("search_text_updated", self._search_text, self._is_case_sensitive)
+	)
 
 func _on_button_visibility_changed():
 	if not _is_highlighted_button_visible(): self._file_buttons_highlighter.highlight(null)
 	_try_update_visible_buttons()
 
 func _try_update_visible_buttons():
-	if self._visible_buttons_update_timer != null: return
-	
-	self._visible_buttons_update_timer = get_tree().create_timer(BUTTONS_UPDATE_TIME)
-	await self._visible_buttons_update_timer.timeout
-	
-	_do_update_visible_buttons()
-	
-	self._visible_buttons_update_timer = null
+	self._cooldown_helper.call_with_cooldown(
+		get_tree(), "visible_buttons_update", _do_update_visible_buttons
+	)
 
 func _do_update_visible_buttons():
 	self._file_buttons.update_visible_elements()
