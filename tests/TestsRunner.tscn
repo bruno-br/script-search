@@ -1,0 +1,41 @@
+[gd_scene load_steps=2 format=3 uid="uid://cgvvgcgjwpfyl"]
+
+[ext_resource type="Script" path="res://tests/TestsRunner.gd" id="1_23s1k"]
+
+[node name="TestsRunner" type="Panel"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 4.0
+offset_top = 4.0
+offset_right = -4.0
+offset_bottom = -4.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_23s1k")
+
+[node name="RunButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -88.0
+offset_top = 52.0
+offset_right = 88.0
+offset_bottom = 100.0
+grow_horizontal = 2
+text = "Run Tests"
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 0
+offset_left = 60.0
+offset_top = 124.0
+offset_right = 1084.0
+offset_bottom = 572.0
+
+[node name="LogsLabel" type="RichTextLabel" parent="PanelContainer"]
+layout_mode = 2
+bbcode_enabled = true
+scroll_following = true
+
+[connection signal="pressed" from="RunButton" to="." method="_on_run_button_pressed"]
