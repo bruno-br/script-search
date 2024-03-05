@@ -9,6 +9,7 @@ func run_tests():
 	var logs_label: RichTextLabel = get_logs_label()
 	logs_label.clear()
 	
+	var failing_test_logs = []
 	var final_result = {"passed": 0, "failed": 0}
 	
 	for file_name in self._file_searcher.get_files(TESTS_PATH):
@@ -18,10 +19,16 @@ func run_tests():
 		var test_file = load(file_name).new()
 		var results = test_file.run_tests()
 		
-		log_test_results(logs_label, results, file_basename)
+		if results.get("failed", []).size() > 0:
+			failing_test_logs.append(func(): log_test_results(logs_label, results, file_basename))
+		else:
+			log_test_results(logs_label, results, file_basename)
 		
 		final_result["passed"] += results.get("passed", []).size()
 		final_result["failed"] += results.get("failed", []).size()
+	
+	for failing_test_log in failing_test_logs:
+		failing_test_log.call()
 	
 	logs_label.append_text(
 		"\n---\n > [color=green]" + str(final_result["passed"]) + " tests passed.[/color]\n" 
