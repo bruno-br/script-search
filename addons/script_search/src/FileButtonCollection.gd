@@ -2,11 +2,14 @@ var _all := []
 var _visible := []
 
 func _init(all=[]):
-	self._all = all
+	update(all)
 
 func append(element):
 	if element.is_visible(): self._visible.append(element)
 	self._all.append(element)
+
+func get_all():
+	return self._all
 
 func has_visible() -> bool:
 	return not self._visible.is_empty()
@@ -16,15 +19,14 @@ func update(value: Array):
 	update_visible_elements()
 
 func update_visible_elements():
-	self._visible = self._all.filter(
-		func(button): return button.is_visible()
-	)
+	self._visible = self._all.filter(func(button): return button.is_visible())
 
 func get_first_visible():
 	if has_visible(): return self._visible[0]
 	return null
 
 func get_next_visible(element):
+	if not has_visible(): return null
 	if element == null: return get_first_visible()
 	
 	var pos = _find_element_position(element, self._visible)
@@ -33,6 +35,7 @@ func get_next_visible(element):
 	return self._visible[next]
 
 func get_prev_visible(element):
+	if not has_visible(): return null
 	if element == null: return get_first_visible()
 	
 	var pos = _find_element_position(element, self._visible)
