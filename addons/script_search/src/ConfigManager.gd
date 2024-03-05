@@ -60,4 +60,19 @@ static func _get_case_sensitive(json_content):
 
 static func _normalize_string_array(array, default):
 	if not array is Array: return default
-	return array.filter(func(element): return element is String)
+	
+	var normalized_array = []
+	var previous_elements = {}
+	
+	for element in array:
+		if _is_valid_string_element(element, previous_elements):
+			normalized_array.append(element)
+			previous_elements[element] = true
+	return normalized_array
+
+static func _is_valid_string_element(element, previous_elements):
+	return (
+		element is String 
+		&& not element.is_empty() 
+		&& not previous_elements.has(element)
+	)
