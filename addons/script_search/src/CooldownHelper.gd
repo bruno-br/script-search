@@ -13,11 +13,14 @@ func _init(cooldown_instances: Dictionary):
 			"timer": null
 		}
 
+func get_cooldown_instance(cooldown_instance_key: String):
+	return self._cooldown_instances.get(cooldown_instance_key)
+
 func call_with_cooldown(scene_tree: SceneTree, key: String, callable: Callable):
 	if _has_inactive_timer_with(key):
-		var cooldown_timer := _create_timer(key, scene_tree)
+		_create_timer(key, scene_tree)
 		
-		await cooldown_timer.timeout
+		await self._cooldown_instances[key]["timer"].timeout
 		
 		callable.call()
 		_clear_timer(key)
@@ -25,7 +28,7 @@ func call_with_cooldown(scene_tree: SceneTree, key: String, callable: Callable):
 func _has_inactive_timer_with(key: String):
 	return (
 		self._cooldown_instances.has(key) 
-		&& self._cooldown_instances.get("timer", null) == null
+		&& self._cooldown_instances[key].get("timer", null) == null
 	)
 
 func _create_timer(key: String, scene_tree: SceneTree) -> SceneTreeTimer:
