@@ -5,7 +5,8 @@ var _assertions = 0
 
 func assert_eq(result, expected, error_msg=null):
 	self._assertions += 1
-	if result != expected:
+	
+	if (typeof(result) != typeof(expected) || result != expected):
 		if error_msg == null: error_msg = str(result) + " != " + str(expected)
 		var last_stack = get_stack()[1]
 		self._errors.append(
