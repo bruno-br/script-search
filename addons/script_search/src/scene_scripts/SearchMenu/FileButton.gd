@@ -20,8 +20,11 @@ func set_file_name(full_name: String):
 	self._file_name = full_name
 	var base_name = full_name.get_file()
 	
-	$Button/FileNameLabel.set_text(base_name)
-	$Button/FilePathLabel.set_text(full_name.trim_prefix("res://"))
+	var file_name_label = get_file_name_label()
+	if file_name_label != null: file_name_label.set_text(base_name)
+	
+	var file_path_label = get_file_path_label()
+	if file_path_label != null: file_path_label.set_text(full_name.trim_prefix("res://"))
 
 func select():
 	emit_signal("script_selected", get_file_name())
@@ -31,6 +34,12 @@ func get_button():
 	
 func get_file_name():
 	return self._file_name
+
+func get_file_name_label():
+	return $Button/FileNameLabel
+
+func get_file_path_label():
+	return $Button/FilePathLabel
 
 func set_highlight(is_active: bool):
 	var button = get_button()
