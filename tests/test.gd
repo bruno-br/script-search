@@ -4,6 +4,18 @@ var _errors = []
 var _assertions = 0
 var _scene_tree = null
 
+func before_all():
+	pass
+
+func after_all():
+	pass
+
+func before_each():
+	pass
+
+func after_each():
+	pass
+
 func assert_eq(result, expected, error_msg=null, stack=get_stack()):
 	self._assertions += 1
 	
@@ -43,18 +55,26 @@ func run_tests(scene_tree: SceneTree = null):
 	
 	var result := { "passed": [], "failed": [] }
 	
+	before_all()
+	
 	for method in get_method_list():
 		if not method.name.begins_with("test_"): continue
 		
 		self._errors = []
 		self._assertions = 0
 		
+		before_each()
+		
 		await call(method.name)
+		
+		after_each()
 		
 		if self._errors.is_empty():
 			var message = "passed with " + str(self._assertions) + " successful assertions."
 			result["passed"].append({"messages": [message], "method": method.name})
 		else:
 			result["failed"].append({"messages": self._errors.duplicate(), "method": method.name})
+	
+	after_all()
 	
 	return result
