@@ -36,10 +36,10 @@ func get_file_name():
 	return self._file_name
 
 func get_file_name_label():
-	return $Button/FileNameLabel
+	return get_node_or_null("Button/FileNameLabel")
 
 func get_file_path_label():
-	return $Button/FilePathLabel
+	return get_node_or_null("Button/FilePathLabel")
 
 func set_highlight(is_active: bool):
 	var button = get_button()
