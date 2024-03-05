@@ -1,23 +1,23 @@
 extends Panel
 
 const TESTS_PATH := "res://tests"
+const FileSearcher := preload("res://addons/script_search/src/FileSearcher.gd")
+
+var _file_searcher = FileSearcher.new({"allowed_extensions": ["gd"]})
 
 func run_tests():
 	var logs_label: RichTextLabel = get_logs_label()
-	
-	var files = Array(DirAccess.get_files_at(TESTS_PATH))
-	
 	logs_label.clear()
 	
-	var final_result = {"passed": 0, "failed": 0} 
+	var final_result = {"passed": 0, "failed": 0}
 	
-	for file_basename in files:
+	for file_name in self._file_searcher.get_files(TESTS_PATH):
+		var file_basename = file_name.get_file()
 		if not file_basename.begins_with("test_"): continue
 		
-		var file_path = TESTS_PATH.path_join(file_basename)
-		var test_file = load(file_path).new()
-		
+		var test_file = load(file_name).new()
 		var results = test_file.run_tests()
+		
 		log_test_results(logs_label, results, file_basename)
 		
 		final_result["passed"] += results.get("passed", []).size()
