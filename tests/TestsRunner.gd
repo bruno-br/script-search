@@ -17,7 +17,7 @@ func run_tests():
 		if not file_basename.begins_with("test_"): continue
 		
 		var test_file = load(file_name).new()
-		var results = test_file.run_tests()
+		var results = await test_file.run_tests(get_tree())
 		
 		if results.get("failed", []).size() > 0:
 			failing_test_logs.append(func(): log_test_results(logs_label, results, file_basename))
