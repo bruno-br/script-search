@@ -50,6 +50,12 @@ func assert_has_type(element, expected_type, error_msg=null, stack=get_stack()):
 	else:
 		assert_eq(type, expected_type, error_msg, stack)
 
+func assert_true(result, error_msg=null, stack=get_stack()):
+	assert_eq(result, true, error_msg, stack)
+
+func assert_false(result, error_msg=null, stack=get_stack()):
+	assert_eq(result, false, error_msg, stack)
+
 func run_tests(scene_tree: SceneTree = null):
 	self._scene_tree = scene_tree
 	
